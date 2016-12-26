@@ -2,23 +2,49 @@
 <html>
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-     	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+		<title>jQuery Shopping List</title>
+		
+		<link rel="stylesheet" type="text/css" href="css/slistCSS.css"/>
+		<script type="text/javascript" src="js/slistJS.js"></script>
+     	
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
         <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+		
 		<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-		<script type="text/javascript" src="http://dev.jtsage.com/cdn/spinbox/latest/jqm-spinbox.min.js"></script>
 		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-		<script src="js/Main.js"></script>
-		<style>
-		.checkBoxLeft{
-          position: absolute; 
-          left: 1px; 
-		  padding: 10px;
-          top: 40%;
-}
-		</style>
+		
+		<script type="text/javascript" src="http://dev.jtsage.com/cdn/spinbox/latest/jqm-spinbox.min.js"></script>
+				
+		<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Raleway:100' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'>
 	</head>
 	<body>
-	
+		<div id="box-1"> </div>
+		<div id="box-2"> </div>
+		<div id="page">
+		<div id="icon"> <img src="img/trolley.png" alt="Shopping cart icon" id="image" height="115" width="153"/>
+			<h1>Shopping List</h1>
+		</div>
+		<div id="main">
+		
+		<div id="form">
+			<input type="text" id="newItem" placeholder="enter your items">
+			<input type="submit" id="addItem" value="+">
+		</div>
+		<div class="line"> </div>
+		</div>
+		</div>
+		
+		<div id="bottom">
+		<div class="items">
+		<ul id="itemList">
+		</ul>
+		</div>
+		</div>
+		</div>
+		
 	</body>
 </html>
