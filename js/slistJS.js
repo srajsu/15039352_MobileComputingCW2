@@ -1,41 +1,315 @@
-function addListItem() {
-    
-     var write = $('#newItem').val();
-     var list = $('#itemList');
-     var item = $('<li><button class="checkbox">&#x2713;</button><span class="list">' + write + '</span><button class="delete">X</button></li>');
-     var newItem = $("#newItem");
+/*-------SHOPPING LIST-------*/
 
-     if (write.length === 0  || write.length > 33) {
-        return false;
-    }
-    
-    list.append(item);
-    $(newItem).val('');
-}
+	var chosenItems = {};
+	var listCreated = false;
+	var counter = "0";
 
-function deleteItem() {
+	$( document ).ready(function() {
+	
+	$("#shoppingLists").on("taphold",function(){
+	$(this).hide();
+	});   
 
-    $(this).parent().remove();
-}
+	var q = localStorage.getItem("SLView");
+	if (q!=null) chosenItems = JSON.parse(q);
+	appendToList();
+	});
 
-function dimItem() {
 
-    $(this).parent().toggleClass('dim');
-}
+/*-------Shopping list - adding a new list-------*/
 
-$(function() {
+function appendToList(){
+	
+	if ($("#SLNew").val()!="")  saveChoice();
 
-    var add = $('#addItem');
-    var newItem = $('#newItem');
-    var list = $('#itemList');
-    
-    add.on('click', addListItem);
-    list.on('click', '.checkbox', dimItem);
-    list.on('click', '.delete', deleteItem);
-    newItem.on('keypress', function (e) {
-        if (e.which == 13) {
-            addListItem();
-        }
+	//iterate through the dictionary chosenItems
+	$("pageone ul").empty();
+	for (var key in chosenItems) {
+	listName = chosenItems[key];
+	
+	//adding items to list
+	$('<li onclick="openShoppingList(this)">').append('<a href="#"><h3>' + listName + '</h3></a><a href="#" class="delete">Delete</a>').appendTo('#shoppingLists');
+
+		}			
+	$("#shoppingLists").listview('refresh');
+		}
+
+	function saveChoice()
+		{if (Object.keys(chosenItems).length == "0")
+		{}else
+			{counter =  parseInt(Object.keys(chosenItems).length) + 1}
+
+						shoppingListAdd = $("#SLNew").val();
+						chosenItems[counter] = shoppingListAdd;
+						localStorage.setItem("SLView",JSON.stringify(chosenItems));
+		}
+	}
+
+/*-------SHOPPING LIST ITEMS-------*/
+
+	var selectedShoppingList; 
+	var addNewItems = {};
+	var counterItems = "0";
+
+	//access shopping list items
+	function openShoppingList(obj){
+	
+		//show page with selected list
+		$.mobile.changePage("#SLItem");
+
+		//refresh the items list
+		$("#SLINew").val('');
+		selectedShoppingList = "";
+		$("#lblSLName").empty();
+	
+		//provide a name to the selected shopping list
+		$("#lblSLName").append($(obj).text());
+		selectedShoppingList = $(obj).text();
+
+		$("#" + selectedShoppingList).empty();
+
+		$('#SLItems').addClass('id').attr('id', $(obj).text());
+		$("#SLItems").removeClass('id').attr('id', 'SLItems');
+
+		var w = localStorage.getItem(selectedShoppingList);
+		if (w!=null) {
+			addNewItems = JSON.parse(w);
+			SIAdd();
+			}else
+			{}
+	}
+	
+	function SIAdd(){
+		if ($("#SLINew").val()!="")  saveItemChoice();
+		for (var key in addNewItems) {
+		listName = addNewItems[key];
+
+	//adding items to list
+	var checkbox = "<div class=\"checkBoxLeft\"><input type=\"checkbox\" id=\"item" + counterItems + "\" class=\"box\"></div>";
+	$('<li>').append('<a href="#">' + checkbox + '<h3>' + listName + '</h3><span class="ui-li-count ui-body-inherit">12</span></a><a href="#" class="delete">Delete</a>').appendTo("#" + selectedShoppingList);
+			}
+			$("#" + selectedShoppingList).listview('refresh');
+			}
+
+
+	function saveItemChoice()
+	{
+		if (Object.keys(addNewItems).length == "0"){}
+			else{
+				counterItems = parseInt(Object.keys(addNewItems).length) + 1;}
+
+				shoppingListItemAdd = $("#SLINew").val();
+				addNewItems[counterItems] = shoppingListItemAdd;
+				localStorage.setItem(selectedShoppingList,JSON.stringify(addNewItems));}
+
+	function backToList(){
+		$("#" + selectedShoppingList).empty();
+		$.mobile.changePage("#SLView");}
+
+
+/*-------Shopping list available items - to be used in autocomplete field-------*/
+
+ $( function() {
+    var availableItems = [
+       "Asparagus",
+       "Broccoli",
+       "Carrots",
+       "Cauliflower",
+       "Celery",
+       "Corn",
+       "Cucumbers",
+       "Lettuce",
+       "Mushrooms",
+       "Onions",
+       "Peppers",
+       "Potatoes",
+       "Spinach",
+       "Squash",
+       "Zucchini",
+       "Tomatoes*",
+       "BBQ sauce",
+       "Gravy",
+       "Honey",
+       "Hot sauce",
+       "Jam",
+	   "Jelly",
+	   "Preserves",
+       "Ketchup",
+	   "Mustard",
+       "Mayonnaise",
+       "Pasta sauce",
+       "Relish",
+       "Salad dressing",
+       "Salsa",
+       "Soy sauce",
+       "Steak sauce",
+       "Syrup",
+       "Worcestershire sauce",
+       "Butter",
+	   "Margarine",
+       "Cottage cheese",
+       "Milk",
+       "Sour cream",
+       "Whipped cream",
+       "Yogurt",
+       "Bagels",
+	   "Croissants",
+       "Buns",
+       "Cake",
+       "Cookies",
+       "Donuts",
+       "Fresh bread",
+       "Pie",
+       "Pita bread",
+       "Sliced bread",
+       "Antiperspirant",
+	   "Deodorant",
+       "Bath soap",
+	   "Hand soap",
+       "Cosmetics",
+       "Cotton swabs",
+       "Facial cleanser",
+       "Facial tissue",
+       "Feminine products",
+       "Floss",
+       "Hair gel",
+       "Lip balm",
+       "Moisturizing lotion",
+       "Mouthwash",
+       "Razors",
+	   "Shaving cream",
+       "Shampoo",
+	   "Conditioner",
+       "Sunblock",
+       "Toilet paper",
+       "Toothpaste",
+       "Vitamins",
+       "Air freshener",
+       "Bathroom cleaner",
+       "Detergent",
+       "Dishwasher soap",
+       "Garbage bags",
+       "Glass cleaner",
+       "Mop head",
+	   "Vacuum bags",
+       "Sponges",
+       "Apples",
+       "Avocados",
+       "Bananas",
+       "Berries",
+       "Cherries",
+       "Grapefruit",
+       "Grapes",
+       "Kiwis",
+       "Lemons",
+       "Melon",
+       "Nectarines",
+       "Oranges",
+       "Peaches",
+       "Pears",
+       "Plums",
+       "Bouillon cubes",
+       "Cereal",
+       "Coffee",
+       "Instant potatoes",
+       "Lime juice",
+       "Mac & cheese",
+       "Olive oil",
+       "Packaged meals",
+       "Pancake mix",
+       "Pasta",
+       "Peanut butter",
+       "Pickles",
+       "Rice",
+       "Tea",
+       "Vegetable oil",
+       "Vinegar",
+       "Bacon",
+	   "Sausage",
+       "Beef",
+       "Chicken",
+       "Ground beef",
+       "Ham",
+       "Hot dogs",
+       "Lunchmeat",
+       "Turkey",
+       "Bleu cheese",
+       "Cheddar",
+       "Cottage cheese",
+       "Cream cheese",
+       "Feta",
+       "Goat cheese",
+       "Mozzarella",
+       "Parmesan",
+       "Provolone",
+       "Ricotta",
+       "Sandwich slices",
+       "Swiss",
+       "Flour",
+       "Shortening",
+       "Sugar",
+       "Sugar substitute",
+       "Yeast",
+       "Catfish",
+       "Crab",
+       "Lobster",
+       "Mussels",
+       "Oysters",
+       "Salmon",
+       "Shrimp",
+       "Tilapia",
+       "Tuna",
+       "Basil",
+       "Black pepper",
+       "Cilantro",
+       "Cinnamon",
+       "Garlic",
+       "Ginger",
+       "Mint",
+       "Oregano",
+       "Paprika",
+       "Parsley",
+       "Red pepper",
+       "Salt",
+       "Vanilla extract",
+       "Beer",
+       "Tonic",
+       "Champagne",
+       "Gin",
+       "Juice",
+       "Mixers",
+       "Red wine",
+	   "White wine",
+       "Rum",
+       "Saké",
+       "Soda pop",
+       "Sports drink",
+       "Whiskey",
+       "Vodka",
+       "Baby food",
+       "Diapers",
+       "Formula",
+       "Lotion",
+       "Baby wash",
+       "Wipes",
+       "Cat food",
+	   "Treats",
+       "Cat litter",
+       "Dog food",
+	   "Treats",
+       "Flea treatment",
+       "Pet shampoo",
+       "Aluminum foil",
+       "Napkins",
+       "Non-stick spray",
+       "Paper towels",
+       "Plastic wrap",
+       "Freezer bags",
+       "Wax paper",
+    ];
+    $( "#SLINew" ).autocomplete({
+      source: availableItems
     });
-});
-
+  } );
+  
+/*--------------------------------------------------------------*/

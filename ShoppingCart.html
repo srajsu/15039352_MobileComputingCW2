@@ -4,47 +4,63 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>jQuery Shopping List</title>
 		
+		<!--Stylesheet and Javascript linking-->
 		<link rel="stylesheet" type="text/css" href="css/slistCSS.css"/>
 		<script type="text/javascript" src="js/slistJS.js"></script>
      	
+		<!--jQuery mobile css files and others-->
 		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
         <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-		
 		<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-		
 		<script type="text/javascript" src="http://dev.jtsage.com/cdn/spinbox/latest/jqm-spinbox.min.js"></script>
-				
-		<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200' rel='stylesheet' type='text/css'>
-		<link href='http://fonts.googleapis.com/css?family=Raleway:100' rel='stylesheet' type='text/css'>
-		<link href='http://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'>
-	</head>
+   	</head>
+	
+	
 	<body>
-		<div id="box-1"> </div>
-		<div id="box-2"> </div>
-		<div id="page">
-		<div id="icon"> <img src="img/trolley.png" alt="Shopping cart icon" id="image" height="115" width="153"/>
-			<h1>Shopping List</h1>
-		</div>
-		<div id="main">
+		<!--div data-role="header" class="ui-content">
+		<img src="img/trolley.png" alt="Shopping cart icon" id="image" height="115" width="153"/>
+		<h1>Shopping List Application</h1>
+		</div-->
 		
-		<div id="form">
-			<input type="text" id="newItem" placeholder="enter your items">
-			<input type="submit" id="addItem" value="+">
+		<div id="SLView" data-role="page" tabindex="0" class="ui-page ui-body-c">
+			<div data-role="main" class="ui-content">
+				<h2>Create a new Shopping List</h2>
+				<form class="">
+					<input id="SLNew" placeholder="Type the new of your new shopping list." />
+					<input type="button" value="Add" onclick="appendToList()" />
+				</form>
+				
+				<h2>Saved Shopping Lists</h2>
+				<form class="ui-filterable">
+					<input placeholder="Type the name of an existing shopping list" id="Items" data-type="search">
+				</form>
+		
+		<ul data-role="listview" data-filter="true" id="shoppingLists" data-input="#Items" data-autodividers="true" data-inset="true" class="touch" data-role="listview" data-icon="false" data-split-icon="delete" data-split-theme="d"></ul>
+			</div>							
 		</div>
-		<div class="line"> </div>
-		</div>
+
+		<div data-role="page" id="SLItem">
+			<div data-role="main" class="ui-content">
+				<h2>
+					<div data-role="field-contain" id="lblSLName"></div>
+				</h2>
+									
+				<input id="SLINew" placeholder="Add items to your shopping List" />
+				<input type="button" value="Add" onclick="SIAdd()" />
+								
+					<form class="ui-filterable">
+						<input id="SIFilter" data-type="search">
+					</form>
+						<ul data-role="listview" data-filter="true" id="SLItems" data-input="#SIFilter" data-autodividers="true" data-inset="true" class="touch" data-role="listview" data-icon="false" data-split-icon="delete" data-split-theme="d"></ul>
+			</div>
+
+			<button onclick="backToList()">Back to Shopping Lists</button>
+			<button onclick="showChosenItems()">Show Chosen Items</button>
 		</div>
 		
-		<div id="bottom">
-		<div class="items">
-		<ul id="itemList">
-		</ul>
-		</div>
-		</div>
-		</div>
-		
+	</div>	
 	</body>
 </html>
