@@ -25,6 +25,52 @@
 		<h1>Shopping List Application</h1>
 		</div-->
 		
+		
+		
+		<!--Menu on the left-->
+		 <div>
+            <div data-role="page" data-theme="f" class="ui-responsive-panel" id="pageOne">
+
+                <!--Common header for the content pages with heading with navigation for 'Menu' and 'Messages'-->
+                <div data-role="header" data-theme="f">
+                    <h1>Shopping List</h1>
+               
+                    <div data-role="navbar" data-iconpos="left">
+                        <ul id="ulMenu">
+                            <!--Opens the 'nav-panel' panel menu on the left-->
+                            <li><a  href="#nav-panel"  data-icon="bars" data-iconpos="notext">Menu</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!--All content pages will be put in the content div-->
+                <div data-role="content" data-theme="f">
+                </div>
+
+                <!--Panel used for the navigation menu, positioned left
+                 Stays on page until the close button is clicked, fixed positioned
+                Display of panel will overlay original content-->
+                <div data-role="panel" data-position="left" data-dismissible="false" data-position-fixed="true" data-display="overlay" id="nav-panel" data-theme="f" data-dividertheme="b">
+                    <!--List view unordered list which will be common for all users-->
+                    <ul data-role="listview">
+                        <!--Divider for Heading-->
+                        <li data-role="list-divider">Main Menu</li>
+                        <li data-icon="delete" style="background-color: #111;">
+                            <!--Close menu to close navigation panel-->
+                            <a href="#" data-rel="close">Close menu</a>
+                        </li>
+
+                        <li><a href="#" onclick="">Item1</a></li>
+                        <li><a href="#" onclick="">Item2</a></li>
+                        <li><a href="#" onclick="">Item3</a></li>
+                        <li><a href="#" onclick="">Item4</a></li>
+                    </ul>
+               
+               
+                </div>
+            </div>
+        </div>
+				
 		<div id="SLView" data-role="page" tabindex="0" class="ui-page ui-body-c">
 			<div data-role="main" class="ui-content">
 				<h2>Create a new Shopping List</h2>
