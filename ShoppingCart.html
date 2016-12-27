@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>jQuery Shopping List</title>
+		<title>Shopping List</title>
 		
 		<!--Stylesheet and Javascript linking-->
 		<link rel="stylesheet" type="text/css" href="css/slistCSS.css"/>
@@ -12,45 +12,36 @@
 		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
         <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 		<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 		<script type="text/javascript" src="http://dev.jtsage.com/cdn/spinbox/latest/jqm-spinbox.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
    	</head>
-	
-	
-	<body>
-		<!--div data-role="header" class="ui-content">
-		<img src="img/trolley.png" alt="Shopping cart icon" id="image" height="115" width="153"/>
-		<h1>Shopping List Application</h1>
-		</div-->
-		
-		
-		
-		<!--Menu on the left-->
-		 <div>
-            <div data-role="page" data-theme="f" class="ui-responsive-panel" id="pageOne">
 
+	<body>
+	
+		<!--Page One (Main Page)-->
+		 <div data-role="page" data-theme="b" id="pageOne">
+         <!--Menu on the left-->
+			<div data-role="content" class="ui-responsive-panel">
                 <!--Common header for the content pages with heading with navigation for 'Menu' and 'Messages'-->
-                <div data-role="header" data-theme="f">
-                    <h1>Shopping List</h1>
-               
+                <div data-role="header" data-position="fixed">
+                    <h1>Shopping List  <img src="img/cart.png" alt="Shopping cart icon" id="image" height="30" width="30"/></h1>               
                     <div data-role="navbar" data-iconpos="left">
                         <ul id="ulMenu">
                             <!--Opens the 'nav-panel' panel menu on the left-->
                             <li><a  href="#nav-panel"  data-icon="bars" data-iconpos="notext">Menu</a></li>
+							<!--Opens the 'search' page-->
+							<li><a  href=""  data-icon="search" data-iconpos="notext">Search</a></li>
+							<!--Opens the 'home' page-->
+							<li><a  href=""  data-icon="home" data-iconpos="notext">Home</a></li>
                         </ul>
                     </div>
                 </div>
-
-                <!--All content pages will be put in the content div-->
-                <div data-role="content" data-theme="f">
-                </div>
-
-                <!--Panel used for the navigation menu, positioned left
-                 Stays on page until the close button is clicked, fixed positioned
+				</div>
+                <!--Panel used for the navigation menu, positioned left. Stays on page until the close button is clicked, fixed positioned.
                 Display of panel will overlay original content-->
-                <div data-role="panel" data-position="left" data-dismissible="false" data-position-fixed="true" data-display="overlay" id="nav-panel" data-theme="f" data-dividertheme="b">
+                <div data-role="panel" data-position="left" data-dismissible="false" data-position-fixed="true" data-display="overlay" id="nav-panel" data-theme="b" data-dividertheme="b">
                     <!--List view unordered list which will be common for all users-->
                     <ul data-role="listview">
                         <!--Divider for Heading-->
@@ -59,36 +50,37 @@
                             <!--Close menu to close navigation panel-->
                             <a href="#" data-rel="close">Close menu</a>
                         </li>
-
                         <li><a href="#" onclick="">Item1</a></li>
-                        <li><a href="#" onclick="">Item2</a></li>
-                        <li><a href="#" onclick="">Item3</a></li>
-                        <li><a href="#" onclick="">Item4</a></li>
-                    </ul>
-               
-               
+                        <li><a href="#" onclick="">My Account</a></li>
+                        <li><a href="#" onclick="">Special Offers</a></li>
+                        <li><a href="#" onclick="">Locate closest store</a></li>
+                    </ul>            
                 </div>
-            </div>
-        </div>
-				
-		<div id="SLView" data-role="page" tabindex="0" class="ui-page ui-body-c">
-			<div data-role="main" class="ui-content">
-				<h2>Create a new Shopping List</h2>
-				<form class="">
-					<input id="SLNew" placeholder="Type the new of your new shopping list." />
-					<input type="button" value="Add" onclick="appendToList()" />
-				</form>
-				
-				<h2>Saved Shopping Lists</h2>
-				<form class="ui-filterable">
-					<input placeholder="Type the name of an existing shopping list" id="Items" data-type="search">
-				</form>
-		
-		<ul data-role="listview" data-filter="true" id="shoppingLists" data-input="#Items" data-autodividers="true" data-inset="true" class="touch" data-role="listview" data-icon="false" data-split-icon="delete" data-split-theme="d"></ul>
-			</div>							
-		</div>
+			<!--End of Menu on the left-->
 
-		<div data-role="page" id="SLItem">
+			<!--Create new Shopping List-->
+			<div id="SLView" data-role="content">
+				<div data-role="main" class="ui-content">
+					<h2>Create a new Shopping List</h2>
+					<form class="">
+						<input id="SLNew" placeholder="Type the new of your new shopping list" />
+						<input type="button" value="Add" onclick="appendToList()" />
+					</form>
+				
+					<h2>Saved Shopping Lists</h2>
+					<form class="ui-filterable">
+						<input placeholder="Type the name of an existing list" id="Items" data-type="search">
+					</form>
+		
+				<ul data-role="listview" data-filter="true" id="shoppingLists" data-input="#Items" data-autodividers="true" data-inset="true" class="touch" data-icon="false" data-split-icon="delete" data-split-theme="d"></ul>
+				</div>							
+			</div>
+		<!--End of Create new Shopping List-->
+		</div>
+		<!--End of Page One (Main Page)-->
+		
+		<!--Add Shopping Items-->
+		<div data-role="content" id="SLItem">
 			<div data-role="main" class="ui-content">
 				<h2>
 					<div data-role="field-contain" id="lblSLName"></div>
@@ -102,11 +94,11 @@
 					</form>
 						<ul data-role="listview" data-filter="true" id="SLItems" data-input="#SIFilter" data-autodividers="true" data-inset="true" class="touch" data-role="listview" data-icon="false" data-split-icon="delete" data-split-theme="d"></ul>
 			</div>
-
 			<button onclick="backToList()">Back to Shopping Lists</button>
 			<button onclick="showChosenItems()">Show Chosen Items</button>
 		</div>
+		<!--End of Add Shopping Items-->
 		
-	</div>	
+		
 	</body>
 </html>
