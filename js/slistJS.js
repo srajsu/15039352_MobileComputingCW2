@@ -30,8 +30,9 @@ function appendToList(){
 	//adding items to list
 	$('<li onclick="openShoppingList(this)">').append('<a href="#"><h3>' + listName + '</h3></a><a href="#" class="delete">Delete</a>').appendTo('#shoppingLists');
 
-		}			
-	$("#shoppingLists").listview('refresh');
+		}
+	//$('#shoppingLists').append(markup);		
+	$('#shoppingLists').listview('refresh');
 		}
 
 	function saveChoice()
@@ -43,7 +44,7 @@ function appendToList(){
 						chosenItems[counter] = shoppingListAdd;
 						localStorage.setItem("SLView",JSON.stringify(chosenItems));
 		}
-	}
+	
 
 /*-------SHOPPING LIST ITEMS-------*/
 

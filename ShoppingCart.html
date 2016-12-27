@@ -3,10 +3,7 @@
 	<head>
 		<title>Shopping List</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<!--Stylesheet and Javascript linking-->
-		<link rel="stylesheet" type="text/css" href="css/slistCSS.css"/>
-		<script type="text/javascript" src="js/slistJS.js"></script>
-     	
+    	
 		<!--jQuery mobile css files and others-->
 		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
         <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -15,6 +12,10 @@
 		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 		<script type="text/javascript" src="http://dev.jtsage.com/cdn/spinbox/latest/jqm-spinbox.min.js"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		
+		<!--Stylesheet and Javascript linking-->
+		<link rel="stylesheet" type="text/css" href="css/slistCSS.css"/>
+		<script src="js/slistJS.js"></script>
    	</head>
 
 	<body>
@@ -61,7 +62,7 @@
 					<h2>Create a new Shopping List</h2>
 					<form class="">
 						<input id="SLNew" placeholder="Type a name for your new shopping list" />
-						<input type="button" value="Add" onclick="appendToList()"/>
+						<input type="button" value="Add" onclick="appendToList()" />
 					</form>
 					<br>
 					<br>	
@@ -148,7 +149,7 @@
 	
 
 	<!--<<<<<<<<<<THIS IS THE MYACCOUNT PAGE>>>>>>>>>>-->
-		<div data-role="content" data-theme="b" id="myaccount">
+		<div data-role="page" data-theme="b" id="myaccount">
 				<!--Header for the content pages with heading with navigation-->
         <div data-role="header" data-position="fixed" data-id="commonheader">
                     <h1>Shopping List <img src="img/cart.png" alt="Shopping cart icon" id="image" height="30" width="30"/></h1>               
@@ -195,7 +196,7 @@
 	<!--<<<<<<<<<<THIS IS THE END OF THE MYACCOUNT PAGE>>>>>>>>>>-->
 	
 	<!--<<<<<<<<<<THIS IS THE SPECIAL OFFERS PAGE>>>>>>>>>>-->
-		<div data-role="content" data-theme="b" id="specialoffers">
+		<div data-role="page" data-theme="b" id="specialoffers">
 				<!--Header for the content pages with heading with navigation-->
         <div data-role="header" data-position="fixed" data-id="commonheader">
                     <h1>Shopping List <img src="img/cart.png" alt="Shopping cart icon" id="image" height="30" width="30"/></h1>               
@@ -242,7 +243,7 @@
 	<!--<<<<<<<<<<THIS IS THE END OF THE SPECIAL OFFERS PAGE>>>>>>>>>>-->
 	
 	<!--<<<<<<<<<<THIS IS THE LOCATE STORE PAGE>>>>>>>>>>-->
-		<div data-role="content" data-theme="b" id="locatestore">
+		<div data-role="page" data-theme="b" id="locatestore">
 				<!--Header for the content pages with heading with navigation-->
         <div data-role="header" data-position="fixed" data-id="commonheader">
                     <h1>Shopping List <img src="img/cart.png" alt="Shopping cart icon" id="image" height="30" width="30"/></h1>               
@@ -289,7 +290,7 @@
 	<!--<<<<<<<<<<THIS IS THE END OF THE LOCATE STORE PAGE>>>>>>>>>>-->
 	
 		<!--Add Shopping Items-->
-		<div data-role="content" id="SLItem" data-theme="b">
+		<div data-role="page" id="SLItem" data-theme="b">
 			<div data-role="content" class="ui-content">
 				<h2>
 					<div data-role="field-contain" id="lblSLName"></div>
