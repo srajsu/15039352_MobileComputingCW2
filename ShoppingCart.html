@@ -20,18 +20,17 @@
 	<body>
 	
 	<div data-role="page" data-theme="b" id="mainpage">
-		
 		<!--Header for the content pages with heading with navigation-->
         <div data-role="header" data-position="fixed" data-id="commonheader">
                     <h1>Shopping List <img src="img/cart.png" alt="Shopping cart icon" id="image" height="30" width="30"/></h1>               
                     <div data-role="navbar" data-iconpos="left">
                         <ul id="ulMenu">
                             <!--Opens the 'nav-panel' panel menu on the left-->
-                            <li><a  href="#nav-panel"  data-icon="bars" data-iconpos="notext">Menu</a></li>
+                            <li><a  href="#nav-panel"  data-icon="bars" data-iconpos="notext" data-transition="slide" data-direction="reverse">Menu</a></li>
 							<!--Opens the 'search' page-->
-							<li><a  href="#faqpage"  data-icon="search" data-iconpos="notext">FAQs</a></li>
+							<li><a  href="#faqpage"  data-icon="search" data-iconpos="notext" data-transition="slide" data-direction="reverse">FAQs</a></li>
 							<!--Opens the 'home' page-->
-							<li><a  href="#home"  data-icon="home" data-iconpos="notext">Home</a></li>
+							<li><a  href="#home"  data-icon="home" data-iconpos="notext" data-transition="slide" data-direction="reverse">Home</a></li>
                         </ul>
                     </div>
         </div>
@@ -58,10 +57,12 @@
 		<!--End of Menu on the left-->
 		
 		<div data-role="content" data-theme="b" id="home">
+		This is content to be placed on the mainpage
 		</div>
 		
 		<!--Common footer for the content pages-->
 			<div data-role="footer" data-position="fixed" data-id="commonfooter">
+				<hr>
 				<p align=center>This is the common footer</p>
 			</div>
 		<!--End of common footer-->	
@@ -70,6 +71,21 @@
 			
 	<!--<<<<<<<<<<THIS IS THE MAIN (HOME) PAGE>>>>>>>>>>-->
 		<!--Page One (Main Page)-->
+				<!--Header for the content pages with heading with navigation-->
+        <div data-role="header" data-position="fixed" data-id="commonheader">
+                    <h1>Shopping List <img src="img/cart.png" alt="Shopping cart icon" id="image" height="30" width="30"/></h1>               
+                    <div data-role="navbar" data-iconpos="left">
+                        <ul id="ulMenu">
+                            <!--Opens the 'nav-panel' panel menu on the left-->
+                            <li><a  href="#nav-panel"  data-icon="bars" data-iconpos="notext" data-transition="slide" data-direction="reverse">Menu</a></li>
+							<!--Opens the 'search' page-->
+							<li><a  href="#faqpage"  data-icon="search" data-iconpos="notext" data-transition="slide" data-direction="reverse">FAQs</a></li>
+							<!--Opens the 'home' page-->
+							<li><a  href="#home"  data-icon="home" data-iconpos="notext" data-transition="slide" data-direction="reverse">Home</a></li>
+                        </ul>
+                    </div>
+        </div>
+		<!--End of header-->
 		<div data-role="content" data-theme="b" id="home">
 			<!--Create new Shopping List-->
 			<div id="SLView" data-role="content">
@@ -92,20 +108,43 @@
 		<!--End of Create new Shopping List-->
 		</div>
 		<!--End of Page One (Main Page)-->
-	
 	<!--<<<<<<<<<<THE END OF THE MAIN (HOME) PAGE>>>>>>>>>>-->		
 	
 	
 	<!--<<<<<<<<<<THIS IS THE FAQ PAGE>>>>>>>>>>-->
-	<div data-role="content" data-theme="b" id="faqpage">
-		<div data-role="header" id="commonheader"></div>
-		<!--FAQ page-->
-		<div data-role="content" data-theme="b">
-		<p>hello FAQ</p>
-		</div>
-		<!--End of FAQ page-->
-		<div data-role="footer" id="commonfooter"></div>
-	</div>
+		<!--Header for the content pages with heading with navigation-->
+		<div data-role="content" data-theme="b" id="faqpage">
+       <div data-role="header" data-position="fixed" data-id="commonheader">	   
+            <h1>Shopping List <img src="img/cart.png" alt="Shopping cart icon" id="image" height="30" width="30"/></h1>               
+                <div data-role="navbar" data-iconpos="left">
+                     <ul id="ulMenu">
+                        <!--Opens the 'nav-panel' panel menu on the left-->
+                        <li><a  href="#nav-panel"  data-icon="bars" data-iconpos="notext" data-transition="slide" data-direction="reverse">Menu</a></li>
+						<!--Opens the 'search' page-->
+						<li><a  href="#faqpage"  data-icon="search" data-iconpos="notext" data-transition="slide" data-direction="reverse">FAQs</a></li>
+						<!--Opens the 'home' page-->
+						<li><a  href="#home"  data-icon="home" data-iconpos="notext" data-transition="slide" data-direction="reverse">Home</a></li>
+                      </ul>
+                 </div>
+        </div>
+		<!--End of header-->
+		<input data-type="search" id="searchFAQ" />
+			<div data-role="collapsible-set" data-mini="true" class="wrap" data-input="#searchFAQ" data-filter="true">
+				<div data-role="collapsible" data-collapsed="false">
+					<h3>Question1</h3>
+					<p>Answer1</p>
+				</div>
+				<div data-role="collapsible" data-collapsed="false">
+					<h3>Question2</h3>
+					<p>Answer2</p>
+				</div>
+				<div data-role="collapsible" data-collapsed="false">
+					<h3>Question3</h3>
+					<p>Answer3</p>
+				</div>
+				</div>
+			</div>
+		
 	<!--<<<<<<<<<<THIS IS THE END OF THE FAQ PAGE>>>>>>>>>>-->
 			
 		
