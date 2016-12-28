@@ -290,6 +290,39 @@
 		<!--Add Shopping Items-->
 		<div data-role="page" id="SLItem" data-theme="b">
 			<div data-role="content" class="ui-content">
+				<div data-role="header" data-position="fixed" data-id="commonheader">
+                    <h1>Shopping List <img src="img/cart.png" alt="Shopping cart icon" id="image" height="30" width="30"/></h1>
+						<div data-role="navbar" data-iconpos="left">
+							<ul id="ulMenu">
+								<!--Opens the 'nav-panel' panel menu on the left-->
+								<li><a  href="#nav-panel"  data-icon="bars" data-iconpos="notext" data-transition="slide" data-direction="reverse">Menu</a></li>
+								<!--Opens the 'search' page-->
+								<li><a  href="#faqpage"  data-icon="search" data-iconpos="notext" data-transition="slide" data-direction="reverse">FAQs</a></li>
+								<!--Opens the 'home' page-->
+								<li><a  href="#mainpage"  data-icon="home" data-iconpos="notext" data-transition="slide" data-direction="reverse">Home</a></li>
+							</ul>
+						</div>					
+				</div>
+						<!--End of header-->
+		<!--Menu on the left-->
+        <!--Panel used for the navigation menu, positioned left. Stays on page until the close button is clicked, fixed positioned.
+        Display of panel will overlay original content-->
+                <div data-role="panel" data-position="left" data-dismissible="false" data-position-fixed="true" data-display="overlay" id="nav-panel" data-theme="b" data-dividertheme="b">
+                    <!--List view unordered list which will be common for all users-->
+                    <ul data-role="listview">
+                        <!--Divider for Heading-->
+                        <li data-role="list-divider">Main Menu</li>
+                        <li data-icon="delete" style="background-color: #111;">
+                            <!--Close menu to close navigation panel-->
+                            <a href="#" data-rel="close">Close menu</a>
+                        </li>
+                        <li><a href="#myaccount" onclick="">My Account</a></li>
+                        <li><a href="#faqpage" onclick="">FAQs</a></li>
+                        <li><a href="#specialoffers" onclick="">Special Offers</a></li>
+                        <li><a href="#locatestore" onclick="">Locate closest store</a></li>
+                    </ul>            
+                </div>
+				<!--End of Menu on the left-->
 				<h2>
 					<div data-role="field-contain" id="lblSLName"></div>
 				</h2>
