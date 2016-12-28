@@ -18,7 +18,7 @@
 
 /*-------Shopping list - adding a new list-------*/
 
-function appendToList(){
+	function appendToList(){
 	
 	if ($("#SLNew").val()!="")  saveChoice();
 
@@ -29,15 +29,14 @@ function appendToList(){
 	
 	//adding items to list
 	$('<li onclick="openShoppingList(this)">').append('<a href="#"><h3>' + listName + '</h3></a><a href="#" class="delete">Delete</a>').appendTo('#shoppingLists');
-
+   // $('<li onclick="test()">').append('<a href="#"><h3>' + listName + '</h3></a><a href="#" class="delete">Delete</a>').appendTo('#shoppingLists');
 		}
-	//$('#shoppingLists').append(markup);		
-	$('#shoppingLists').listview('refresh');
+	$("#shoppingLists").listview('refresh');
 		}
 
 	function saveChoice()
-		{if (Object.keys(chosenItems).length == "0")
-		{}else
+		{if (Object.keys(chosenItems).length == "0"){}
+		else
 			{counter =  parseInt(Object.keys(chosenItems).length) + 1}
 
 						shoppingListAdd = $("#SLNew").val();
@@ -51,6 +50,12 @@ function appendToList(){
 	var selectedShoppingList; 
 	var addNewItems = {};
 	var counterItems = "0";
+	
+	//function test()
+	//{
+		//show page with selected list
+		//$.mobile.changePage("#TestDiv");
+	//}
 
 	//access shopping list items
 	function openShoppingList(obj){
@@ -75,9 +80,10 @@ function appendToList(){
 		var w = localStorage.getItem(selectedShoppingList);
 		if (w!=null) {
 			addNewItems = JSON.parse(w);
-			SIAdd();
-			}else
-			{}
+			SIAdd();}
+			else{}
+			
+			
 	}
 	
 	function SIAdd(){
@@ -97,11 +103,13 @@ function appendToList(){
 	{
 		if (Object.keys(addNewItems).length == "0"){}
 			else{
-				counterItems = parseInt(Object.keys(addNewItems).length) + 1;}
+				counterItems = parseInt(Object.keys(addNewItems).length) + 1;
+				}
 
 				shoppingListItemAdd = $("#SLINew").val();
 				addNewItems[counterItems] = shoppingListItemAdd;
-				localStorage.setItem(selectedShoppingList,JSON.stringify(addNewItems));}
+				localStorage.setItem(selectedShoppingList,JSON.stringify(addNewItems));
+	}
 
 	function backToList(){
 		$("#" + selectedShoppingList).empty();
@@ -294,10 +302,10 @@ function appendToList(){
        "Baby wash",
        "Wipes",
        "Cat food",
-	   "Treats",
+	   "Cat Treats",
        "Cat litter",
        "Dog food",
-	   "Treats",
+	   "Dog Treats",
        "Flea treatment",
        "Pet shampoo",
        "Aluminum foil",
