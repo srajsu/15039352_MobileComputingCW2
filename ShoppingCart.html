@@ -11,9 +11,10 @@
 		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 		<script type="text/javascript" src="http://dev.jtsage.com/cdn/spinbox/latest/jqm-spinbox.min.js"></script>
 		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-				
+		<link href='http://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css'><link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">		
 		<!--Stylesheet and Javascript linking-->
-		<link rel="stylesheet" type="text/css" href="css/slistCSS.css"/>
+		<link rel="stylesheet" href="css/stylesheet.css" type="text/css" />
+		<link rel="stylesheet" href="css/normalize.css" type="text/css" />
 		<script src="js/slistJS.js"></script>
    	</head>
 
@@ -323,16 +324,51 @@
                     </ul>            
                 </div>
 				<!--End of Menu on the left-->
-				<h2>
-					<div data-role="field-contain" id="lblSLName"></div>
-				</h2>
-				<input id="SLINew" placeholder="Add items to your shopping List" />
-				<input type="button" value="Add" onclick="SIAdd()" />
+				<div>
+					<h3>	
+						<div data-role="field-contain" id="lblSLName"></div>
+					</h3>
+						
+							<input type"text" class="custinput" id="SLINew" placeholder="Add items to your shopping List" data-mini="true" autofocus>
+							<button type="submit" onclick="SIAdd()">Add</button>
 								
 					<form class="ui-filterable">
-						<input id="SIFilter" data-type="search">
+						<input id="SIFilter" data-type="search" placeholder="Search from the current shopping list" data-mini="true" />
 					</form>
-						<ul data-role="listview" data-filter="true" id="SLItems" data-input="#SIFilter" data-autodividers="true" data-inset="true" class="touch" data-icon="false" data-split-icon="delete" data-split-theme="d"></ul>
+					
+					<div>
+						<h4>Current List:</h4>
+							<table class="touch">
+								<thead>
+									<tr>
+										<th class="edit" colspan="3"><span>edit</span></th>
+									</tr>
+								</thead>
+								<tbody id="SLItems" data-input="#SIFilter">
+								</tbody>
+							</table>
+					</div>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+						<!--ul data-role="listview" data-filter="true" id="SLItems" data-input="#SIFilter" data-autodividers="true" data-inset="true" class="touch" data-icon="false" data-split-icon="delete" data-split-theme="d"></ul-->
+						<!--ul data-role="listview" data-filter="true" id="SLItems" data-input="#SIFilter" data-autodividers="true" class="touch" data-icon="true" data-split-icon="delete"></ul>
+						
+						
+						
+				</div>
 			</div>
 				<button onclick="backToList()">Back to Shopping Lists</button>
 				<button onclick="showChosenItems()">Show Chosen Items</button>
