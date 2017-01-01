@@ -22,7 +22,7 @@
 	<!--<<<<<<<<<<THE MAIN (HOME) PAGE>>>>>>>>>>-->	
 	<div data-role="page" data-theme="b" id="mainpage">
 		<!--Header for the content pages with heading with navigation-->
-        <div data-role="header" data-position="fixed" data-id="commonheader">
+        <div data-role="header" data-position="fixed">
                     <h1>Shopping List <img src="img/cart.png" alt="Shopping cart icon" id="image" height="30" width="30"/></h1>               
                     <div data-role="navbar" data-iconpos="left">
                         <ul id="ulMenu">
@@ -82,7 +82,7 @@
 	<!--<<<<<<<<<<THIS IS THE FAQ PAGE>>>>>>>>>>-->
 		<div data-role="page" data-theme="b" id="faqpage">
 		<!--Header for the content pages with heading with navigation-->
-       <div data-role="header" data-position="fixed" data-id="commonheader">	   
+       <div data-role="header" data-position="fixed">	   
             <h1>Shopping List <img src="img/cart.png" alt="Shopping cart icon" id="image" height="30" width="30"/></h1>               
                 <div data-role="navbar" data-iconpos="left">
                      <ul id="ulMenu">
@@ -137,7 +137,7 @@
 	<!--<<<<<<<<<<THIS IS THE MYACCOUNT PAGE>>>>>>>>>>-->
 		<div data-role="page" data-theme="b" id="myaccount">
 				<!--Header for the content pages with heading with navigation-->
-        <div data-role="header" data-position="fixed" data-id="commonheader">
+        <div data-role="header" data-position="fixed">
                     <h1>Shopping List <img src="img/cart.png" alt="Shopping cart icon" id="image" height="30" width="30"/></h1>               
                     <div data-role="navbar" data-iconpos="left">
                         <ul id="ulMenu">
@@ -178,7 +178,7 @@
 	<!--<<<<<<<<<<THIS IS THE SPECIAL OFFERS PAGE>>>>>>>>>>-->
 		<div data-role="page" data-theme="b" id="specialoffers">
 				<!--Header for the content pages with heading with navigation-->
-        <div data-role="header" data-position="fixed" data-id="commonheader">
+        <div data-role="header" data-position="fixed">
                     <h1>Shopping List <img src="img/cart.png" alt="Shopping cart icon" id="image" height="30" width="30"/></h1>               
                     <div data-role="navbar" data-iconpos="left">
                         <ul id="ulMenu">
@@ -220,7 +220,7 @@
 	<!--<<<<<<<<<<THIS IS THE LOCATE STORE PAGE>>>>>>>>>>-->
 		<div data-role="page" data-theme="b" id="locatestore">
 				<!--Header for the content pages with heading with navigation-->
-        <div data-role="header" data-position="fixed" data-id="commonheader">
+        <div data-role="header" data-position="fixed">
                     <h1>Shopping List <img src="img/cart.png" alt="Shopping cart icon" id="image" height="30" width="30"/></h1>               
                     <div data-role="navbar" data-iconpos="left">
                         <ul id="ulMenu">
@@ -254,7 +254,6 @@
                 </div>
 		<!--End of Menu on the left-->
 		STORE LOCATOR PAGE
-		
 
 		</div>
 	<!--<<<<<<<<<<THIS IS THE END OF THE LOCATE STORE PAGE>>>>>>>>>>-->
@@ -263,7 +262,7 @@
 		<!--Add Shopping Items-->
 		<div data-role="page" data-theme="b" id="SLItem">
 			<div data-role="content" class="ui-content">
-				<div data-role="header" data-position="fixed" data-id="commonheader">
+				<div data-role="header" data-position="fixed">
                     <h1>Shopping List <img src="img/cart.png" alt="Shopping cart icon" id="image" height="30" width="30"/></h1>
 						<div data-role="navbar" data-iconpos="left">
 							<ul id="ulMenu">
@@ -310,18 +309,19 @@
 						<input id="SIFilter" data-type="search" placeholder="Search from the current shopping list" data-mini="true" autofocus />
 					</form>
 					
-					
-						<h3>Current List:</h3>
+					<h3>Current List:</h3>
 						<hr>
-							<table class="items" id="SLItems">
+						
+							<table class="items" id="SLItems" style="width:100%;">
 								<thead>
 									<tr>
-										<th class="edit" colspan="3"><span>edit</span></th>
+										<th class="edit"><span>edit</span></th>
 									</tr>
 								</thead>
 								<tbody  data-input="#SIFilter">
 								</tbody>
 							</table>
+							
 					</div>
 
 					<script type="text/javascript">
@@ -330,17 +330,17 @@
 						_gaq.push(['_setDomainName', 'jqueryscript.net']);
 						_gaq.push(['_trackPageview']);
 
-						function() {
+						function aa() {
 							var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
 							ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 							var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-						})();
+						};
 					</script>
 						<!--ul data-role="listview" data-filter="true" id="SLItems" data-input="#SIFilter" data-autodividers="true" data-inset="true" class="touch" data-icon="false" data-split-icon="delete" data-split-theme="d"></ul-->
 						<!--ul data-role="listview" data-filter="true" id="SLItems" data-input="#SIFilter" data-autodividers="true" class="touch" data-icon="true" data-split-icon="delete"></ul-->
 				</div>
 			</div>
-				<button onclick="backToList()">Back to Shopping Lists</button>
+				<button onclick="window.location='#mainpage'">Back to Shopping Lists</button>
 				<button onclick="showChosenItems()">Show Chosen Items</button>
 		<!--End of Add Shopping Items-->
 		</div> 	

@@ -5,7 +5,9 @@
 	var counter = "0";
 
 	$( document ).ready(function() {
-	
+		
+	//localStorage.removeItem("SLINew");
+	//localStorage.removeItem("monday");
 	$("#shoppingLists").on("taphold",function(){
 	$(this).hide();
 	});   
@@ -28,14 +30,14 @@
 	listName = chosenItems[key];
 	
 	//adding items to list
-	$('<li onclick="openShoppingList(this)">').append('<a href="#"><h3>' + listName + '</h3></a><a href="#" class="delete">Delete</a>').appendTo('#shoppingLists');
-   // $('<li onclick="test()">').append('<a href="#"><h3>' + listName + '</h3></a><a href="#" class="delete">Delete</a>').appendTo('#shoppingLists');
+      	$('<li onclick="openShoppingList(this)">').append('<a href="#"><h3>' + listName + '</h3></a><a href="#" class="delete">Delete</a>').appendTo('#shoppingLists');
+     // $('<li onclick="test()">').append('<a href="#"><h3>' + listName + '</h3></a><a href="#" class="delete">Delete</a>').appendTo('#shoppingLists');
 		}
 	$("#shoppingLists").listview('refresh');
 		}
 
-	function saveChoice()
-		{if (Object.keys(chosenItems).length == "0"){}
+	function saveChoice(){
+		if (Object.keys(chosenItems).length == "0"){}
 		else
 			{counter =  parseInt(Object.keys(chosenItems).length) + 1}
 
@@ -50,12 +52,6 @@
 	var selectedShoppingList; 
 	var addNewItems = {};
 	var counterItems = "0";
-	
-	//function test()
-	//{
-		//show page with selected list
-		//$.mobile.changePage("#TestDiv");
-	//}
 
 	//access shopping list items
 	function openShoppingList(obj){
@@ -73,34 +69,66 @@
 		selectedShoppingList = $(obj).text();
 
 		$("#" + selectedShoppingList).empty();
+		 $("#SLItems").empty();
 
-		$('#SLItems').addClass('id').attr('id', $(obj).text());
-		$("#SLItems").removeClass('id').attr('id', 'SLItems');
+		//$('#SLItems').addClass('id').attr('id', $(obj).text());
+		//$("#SLItems").removeClass('id').attr('id', 'SLItems');
 
 		var w = localStorage.getItem(selectedShoppingList);
 		if (w!=null) {
 			addNewItems = JSON.parse(w);
 			SIAdd();}
-			else{}
-			
-			
+			else{
+				//some kind of alert
+			}	
 	}
 	
 	function SIAdd(){
+		
+	//	$("#SLItems > tbody").empty();
+	//	$("#SLItems > tr").remove();
+	//	$("#SLItems > tbody").html("");
+		
+		
 		if ($("#SLINew").val()!="")  saveItemChoice();
+		
+		
+		//add edit button in table
+		 var editbutton = "<thead><tr><td><th class='edit' colspan='3'><span>edit</span></th></td></tr></thead><tbody>";
+		 $("#SLItems").append(editbutton);
+		
+		
 		for (var key in addNewItems) {
 		listName = addNewItems[key];
+		
+		
+		//var checkbox = "<div class=\"checkBoxLeft\"><input type=\"checkbox\" id=\"item" + counterItems + "\" class=\"box\"></div>";
+		
+		//$(".cross").hide(); // hiding the delete icon
+		
+	   var checkbox = "<div class='check'><input type='checkbox' class='box' id='item" + counterItems + "'/>" +  "<label for='item" + id + "' class='check-label'></label></div>";
+	   var delIcon = "<td><img src='img/cross.png' alt='cross' class='cross'></td>";
+	   var items = "<tr style='text-decoration:none;'><td>" + checkbox + "</td><td class='content'><span class>" + listName + "</span></td>" + delIcon + "</tr>";
+	   
+	  	$("#SLItems").append(items + "</tbody>");
+	
+	    }
+		
+		$("#SLItems").listview('refresh');
 
-	//adding items to list
-	var checkbox = "<div class=\"checkBoxLeft\"><input type=\"checkbox\" id=\"item" + counterItems + "\" class=\"box\"></div>";
-	$('<li>').append('<a href="#">' + checkbox + '<h3>' + listName + '</h3><span class="ui-li-count ui-body-inherit">12</span></a><a href="#" class="delete">Delete</a>').appendTo("#" + selectedShoppingList);
-			}
-			$("#" + selectedShoppingList).listview('refresh');
-			}
+		
+		
+	//	$("#SLItems").listview('refresh');
+	
+	//<td></a><a href='#' class='delete'>Delete</a></td>
 
+	  //adding items to list
+	
+     //	$('<li>').append('<a href="#">' + checkbox + '<h3>' + listName + '</h3><span class="ui-li-count ui-body-inherit">12</span></a><a href="#" class="delete">Delete</a>').appendTo("#SLItems");
+	
+	}
 
-	function saveItemChoice()
-	{
+	function saveItemChoice(){
 		if (Object.keys(addNewItems).length == "0"){}
 			else{
 				counterItems = parseInt(Object.keys(addNewItems).length) + 1;
@@ -323,11 +351,10 @@
   
 /*--------------------------------------------------------------*/
 
-
-
 var id = 1; // unique id for list items
 
 $(document).ready(function(e) {
+	
 	editButton();
 
 	$("tbody").on("click", ".cross", function() {
@@ -339,6 +366,8 @@ $(document).ready(function(e) {
 	$("tbody").on("click", ".box", function() {
 		$(this).closest("tr").find("span").toggleClass("checked");
 	});
+	
+	
 
 });
 
@@ -349,14 +378,15 @@ $(document).on("keydown", function(e) {
 	}
 });
 
-
-
 // Toggle delete icon when edit button is clicked
 function editButton() {
-	$(".edit").on("click", "span", function() {
-		$(".cross").toggle();
-	});
+	// Method two: 
+$(".edit").delegate("span", "click", function(){
+   $(".cross").toggle();
+    alert('you clicked me!');
+});
 }
+
 
 
 // Obtaining customer input and then calling addItem() with the input
@@ -365,16 +395,14 @@ function getInput() {
 	var input = custInput.val();
 
 	if ((input !== "") && ($.trim(input) !== "")) {
-		addItem(input);
+	//	addItem(input);
 		custInput.val("");
 	}
 }
 
-
-/******************************************************************************
-	adding item to the list
-	increment id counter for unique id
-*******************************************************************************/
+/*--------------------------------------------------------------*/
+	//adding item to the list increment id counter for unique id
+/*--------------------------------------------------------------*/
 function addItem(message) {
 
 	$(".cross").hide(); // hiding the delete icon
@@ -389,3 +417,5 @@ function addItem(message) {
 
 	id++;
 }
+
+/*--------------------------------------------------------------*/
