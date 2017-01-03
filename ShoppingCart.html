@@ -68,7 +68,9 @@
 				<div data-role="content" class="ui-content">
 					<h3>Create a new Shopping List</h3>
 					<form class="">
+						<input id="datepicker" type="text" placeholder="Choose a date...">
 						<input id="SLNew" placeholder="New shopping list name" />
+						<br>
 						<input type="button" value="Add" onclick="appendToList()" />
 					</form>
 					<br>
@@ -215,12 +217,18 @@
                 </div>
 				<!--End of Menu on the left-->
 				<div>						
-							<input type="text" class="custinput" id="SLINew" placeholder="Add items to your shopping List" data-mini="true" autofocus />
-							
-							<label for="spinner">Select a value:</label>
-							<input type='button' value='+' class='qtyplus' field='quantity' />
-							<input type='text' name='quantity' value='1' class='qty' style="margin-bottom: 0px !important"/>
-							<input type='button' value='-' class='qtyminus' field='quantity' />
+							<table>
+							<tr>
+							<td width="60%"><input type="text" class="custinput" id="SLINew" placeholder="Add items..." data-mini="true" autofocus /></td>
+							<td>
+								<input type='text' name='quantity' value='1' class='qty' style="margin-bottom: 0px !important"/>
+							</td>
+							<td>
+								<input type='button' value='+' class='qtyplus' field='quantity' />
+								<input type='button' value='-' class='qtyminus' field='quantity' />
+							</td>
+							</tr>
+							</table>
 							<button type="submit" onclick="SIAdd()">Add</button>
 							
 					<div class="items">
