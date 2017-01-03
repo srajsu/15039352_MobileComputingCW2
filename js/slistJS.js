@@ -139,11 +139,21 @@
 				localStorage.setItem(selectedShoppingList,JSON.stringify(addNewItems));
 	}
 
+		
+	//
 	function backToList(){
 		$("#" + selectedShoppingList).empty();
 		$.mobile.changePage("#SLView");}
 
 
+	//Delete saved shopping lists
+	//function removeshoppinglists() {
+    //var elem = document.getElementById('shoppingLists');
+    //elem.parentNode.removeChild(elem);
+    //return false;
+	//}
+		
+		
 /*-------Shopping list available items - to be used in autocomplete field-------*/
 
  $( function() {

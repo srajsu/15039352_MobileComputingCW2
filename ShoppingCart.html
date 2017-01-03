@@ -7,6 +7,7 @@
 		<!--jQuery mobile css files and others-->
 		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
         <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 		<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 		<script type="text/javascript" src="http://dev.jtsage.com/cdn/spinbox/latest/jqm-spinbox.min.js"></script>
@@ -16,6 +17,14 @@
 		<link rel="stylesheet" href="css/stylesheet.css" type="text/css" />
 		<link rel="stylesheet" href="css/normalize.css" type="text/css" />
 		<script src="js/slistJS.js"></script>
+		
+		<!--Datepicker-->
+		<script>
+			$( function() {
+			var datepicker = $( "#datepicker" ).datepicker();
+			} );
+		</script>
+		
    	</head>
 
 	<body>
@@ -48,7 +57,7 @@
                             <!--Close menu to close navigation panel-->
                             <a href="#" data-rel="close">Close menu</a>
                         </li>
-                        <li><a href="#faqpage" onclick="">FAQs</a></li>
+                        <li><a href="#report" onclick="">Report Generation</a></li>
                         <li><a href="#specialoffers" onclick="">Special Offers</a></li>
                     </ul>            
                 </div>
@@ -160,7 +169,7 @@
                             <a href="#" data-rel="close">Close menu</a>
                         </li>
                         <li><a href="#faqpage" onclick="">FAQs</a></li>
-                        <li><a href="#locatestore" onclick="">Locate closest store</a></li>
+                        <li><a href="#specialoffers" onclick="">Special Offers</a></li>
                     </ul>            
                 </div>
 		<!--End of Menu on the left-->
@@ -200,21 +209,19 @@
                             <!--Close menu to close navigation panel-->
                             <a href="#" data-rel="close">Close menu</a>
                         </li>
-                        <li><a href="#myaccount" onclick="">My Account</a></li>
                         <li><a href="#faqpage" onclick="">FAQs</a></li>
                         <li><a href="#specialoffers" onclick="">Special Offers</a></li>
-                        <li><a href="#locatestore" onclick="">Locate closest store</a></li>
                     </ul>            
                 </div>
 				<!--End of Menu on the left-->
-				<div>
-					<h3>	
-						<div data-role="field-contain" id="lblSLName"></div>
-					</h3>
-						
+				<div>						
 							<input type="text" class="custinput" id="SLINew" placeholder="Add items to your shopping List" data-mini="true" autofocus />
-							<button type="submit" class="btn" onclick="SIAdd()">Add</button>
-						
+							
+							<label for="spinner">Select a value:</label>
+							<input type='button' value='+' class='qtyplus' field='quantity' />
+							<input type='text' name='quantity' value='1' class='qty' style="margin-bottom: 0px !important"/>
+							<input type='button' value='-' class='qtyminus' field='quantity' />
+							<button type="submit" onclick="SIAdd()">Add</button>
 							
 					<div class="items">
 					<form class="ui-filterable">
@@ -257,5 +264,47 @@
 		<!--End of Add Shopping Items-->
 		</div> 	
 	<!--<<<<<<<<<<THIS IS THE END OF THE SHOPPING LIST PAGE>>>>>>>>>>-->
+		
+	<!--<<<<<<<<<<THIS IS THE REPORT GENERATION PAGE>>>>>>>>>>-->
+		<div data-role="page" data-theme="b" id="report">
+			<div data-role="content" class="ui-content">
+				<div data-role="header" data-position="fixed">
+                    <h1>Shopping List <img src="img/cart.png" alt="Shopping cart icon" id="image" height="30" width="30"/></h1>
+						<div data-role="navbar" data-iconpos="left">
+							<ul id="ulMenu">
+								<!--Opens the 'nav-panel' panel menu on the left-->
+								<li><a  href="#nav-panel"  data-icon="bars" data-iconpos="notext" data-transition="slide" data-direction="reverse">Menu</a></li>
+								<!--Opens the 'search' page-->
+								<li><a  href="#faqpage"  data-icon="search" data-iconpos="notext" data-transition="slide" data-direction="reverse">FAQs</a></li>
+								<!--Opens the 'home' page-->
+								<li><a  href="#mainpage"  data-icon="home" data-iconpos="notext" data-transition="slide" data-direction="reverse">Home</a></li>
+							</ul>
+						</div>					
+				</div>
+						<!--End of header-->
+		<!--Menu on the left-->
+        <!--Panel used for the navigation menu, positioned left. Stays on page until the close button is clicked, fixed positioned.
+        Display of panel will overlay original content-->
+                <div data-role="panel" data-position="left" data-dismissible="false" data-position-fixed="true" data-display="overlay" id="nav-panel" data-theme="b" data-dividertheme="b">
+                    <!--List view unordered list which will be common for all users-->
+                    <ul data-role="listview">
+                        <!--Divider for Heading-->
+                        <li data-role="list-divider">Main Menu</li>
+                        <li data-icon="delete" style="background-color: #111;">
+                            <!--Close menu to close navigation panel-->
+                            <a href="#" data-rel="close">Close menu</a>
+                        </li>
+                        <li><a href="#faqpage" onclick="">FAQs</a></li>
+                        <li><a href="#specialoffers" onclick="">Special Offers</a></li>
+                    </ul>            
+                </div>
+				<!--End of Menu on the left-->
+				<div>						
+						GENERATE REPORT
+				</div>		
+		</div>
+	
+	</div>
+	<!--<<<<<<<<<<THIS IS THE END OF THE REPORT PAGE>>>>>>>>>>-->
 	</body>
 </html>
