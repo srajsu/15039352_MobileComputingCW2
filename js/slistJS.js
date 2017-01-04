@@ -122,8 +122,11 @@
 		selectedShoppingList = $(obj).text();
 
 		$("#" + selectedShoppingList).empty();
-		 $("#SLItems").empty();
-
+	    $("#SLItems tr").empty();
+        $("#SLItems td").empty();
+		
+		$("#SLItems thead tr").append("<th class='edit' onclick='editBtton();'><span>edit</span></th>");
+ 
 		//$('#SLItems').addClass('id').attr('id', $(obj).text());
 		//$("#SLItems").removeClass('id').attr('id', 'SLItems');
 
@@ -132,52 +135,46 @@
 			addNewItems = JSON.parse(w);
 			SIAdd();}
 			else{
-				//some kind of alert
+				
 			}	
 	}
 	
 	function SIAdd(){
-		
-	//	$("#SLItems > tbody").empty();
-	//	$("#SLItems > tr").remove();
-	//	$("#SLItems > tbody").html("");
+	
 		
 		
 		if ($("#SLINew").val()!="")  saveItemChoice();
 		
 		
 		//add edit button in table
-		 var editbutton = "<thead><tr><td><th class='edit' colspan='3'><span>edit</span></th></td></tr></thead><tbody>";
-		 $("#SLItems").append(editbutton);
+		// var editbutton = "<thead><tr><td><th class='edit' colspan='3'><span>edit</span></th></td></tr></thead><tbody>";
+	//	 $("#SLItems").append(editbutton);
 		
+		 
+		//$("#SLItems").empty();
+		//		$("#SLItems > tbody").empty();
+	 	$("#SLItems > tr").empty();
+	 //	$("#SLItems > tbody").html("");
+	 
+	
 		
 		for (var key in addNewItems) {
+			
 		listName = addNewItems[key];
+		addItem(listName);
 		
+		 //var checkbox = "<div class=\"checkBoxLeft\"><input type=\"checkbox\" id=\"item" + counterItems + "\" class=\"box\"></div>";
 		
-		//var checkbox = "<div class=\"checkBoxLeft\"><input type=\"checkbox\" id=\"item" + counterItems + "\" class=\"box\"></div>";
+		 //$(".cross").hide(); // hiding the delete icon
 		
-		//$(".cross").hide(); // hiding the delete icon
-		
-	   var checkbox = "<div class='check'><input type='checkbox' class='box' id='item" + counterItems + "'/>" +  "<label for='item" + id + "' class='check-label'></label></div>";
-	   var delIcon = "<td><img src='img/cross.png' alt='cross' class='cross'></td>";
-	   var items = "<tr style='text-decoration:none;'><td>" + checkbox + "</td><td class='content'><span class>" + listName + "</span></td>" + delIcon + "</tr>";
+	     // var checkbox = "<div class='check'><input type='checkbox' class='box' id='item" + counterItems + "'/>" +  "<label for='item" + id + "' class='check-label'></label></div>";
+	     // var delIcon = "<td><img src='img/cross.png' alt='cross' class='cross'></td>";
+	     // var items = "<tr style='text-decoration:none;'><td>" + checkbox + "</td><td class='content'><span class>" + listName + "</span></td>" + delIcon + "</tr>";
 	   
-	  	$("#SLItems").append(items + "</tbody>");
+	     //	$("#SLItems").append(items + "</tbody>");
 	
 	    }
-		
-		$("#SLItems").listview('refresh');
 
-		
-		
-	//	$("#SLItems").listview('refresh');
-	
-	//<td></a><a href='#' class='delete'>Delete</a></td>
-
-	  //adding items to list
-	
-     //	$('<li>').append('<a href="#">' + checkbox + '<h3>' + listName + '</h3><span class="ui-li-count ui-body-inherit">12</span></a><a href="#" class="delete">Delete</a>').appendTo("#SLItems");
 	
 	}
 
@@ -416,9 +413,62 @@
 
 var id = 1; // unique id for list items
 
+
+
+// triggered on Enter
+$(document).on("keydown", function(e) {
+	if(e.keyCode === 13) {
+		getInput();
+	}
+});
+
+// Toggle delete icon when edit button is clicked
+function editBtton() {
+	// Method two: 
+
+   $(".cross").toggle();
+
+}
+
+
+
+
+// Obtaining customer input and then calling addItem() with the input
+function getInput() {
+	var custInput = $(".custinput");
+	var input = custInput.val();
+
+	if ((input !== "") && ($.trim(input) !== "")) {
+	  //  addItem(input);
+		custInput.val("");
+	}
+}
+
+/*--------------------------------------------------------------*/
+	//adding item to the list increment id counter for unique id
+/*--------------------------------------------------------------*/
+function addItem(message) {
+
+	 $(".cross").hide(); // hiding the delete icon
+	 
+	
+	 
+	 $("#SLItems").append("<tbody>");
+
+	var checkbox = "<td class=\"check\">" + "<input type=\"checkbox\" id=\"item" + id + "\" class=\"box\">" + "<label for=\"item" + id + "\" class=\"check-label\"></label></td>";
+
+	var content = "<td class=\"content\"><span>" + message + "</span></td>";
+
+	var delIcon = "<td><img src=\"img/cross.png\" alt=\"cross\" class=\"cross\"></td>";
+
+	$("#SLItems").append("<tr>" + checkbox + content + delIcon + "</tr>");
+	 $("#SLItems").append("</tbody>");
+	id++;
+}
+
 $(document).ready(function(e) {
 	
-	editButton();
+	
 
 	$("tbody").on("click", ".cross", function() {
 		$(this).closest("tr").remove();
@@ -430,51 +480,5 @@ $(document).ready(function(e) {
 		$(this).closest("tr").find("span").toggleClass("checked");
 	});
 });
-
-// triggered on Enter
-$(document).on("keydown", function(e) {
-	if(e.keyCode === 13) {
-		getInput();
-	}
-});
-
-// Toggle delete icon when edit button is clicked
-function editButton() {
-	// Method two: 
-$(".edit").on("click", "span", function(){
-   $(".cross").toggle();
-});
-}
-
-
-
-// Obtaining customer input and then calling addItem() with the input
-function getInput() {
-	var custInput = $(".custinput");
-	var input = custInput.val();
-
-	if ((input !== "") && ($.trim(input) !== "")) {
-		addItem(input);
-		custInput.val("");
-	}
-}
-
-/*--------------------------------------------------------------*/
-	//adding item to the list increment id counter for unique id
-/*--------------------------------------------------------------*/
-function addItem(message) {
-
-	$(".cross").hide(); // hiding the delete icon
-
-	var checkbox = "<td class=\"check\">" + "<input type=\"checkbox\" id=\"item" + id + "\" class=\"box\">" + "<label for=\"item" + id + "\" class=\"check-label\"></label></td>";
-
-	var content = "<td class=\"content\"><span>" + message + "</span></td>";
-
-	var delIcon = "<td><img src=\"img/cross.png\" alt=\"cross\" class=\"cross\"></td>";
-
-	$("tbody").append("<tr>" + checkbox + content + delIcon + "</tr>");
-
-	id++;
-}
 
 /*--------------------------------------------------------------*/
