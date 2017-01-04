@@ -429,9 +429,6 @@ $(document).ready(function(e) {
 	$("tbody").on("click", ".box", function() {
 		$(this).closest("tr").find("span").toggleClass("checked");
 	});
-	
-	
-
 });
 
 // triggered on Enter
@@ -444,9 +441,8 @@ $(document).on("keydown", function(e) {
 // Toggle delete icon when edit button is clicked
 function editButton() {
 	// Method two: 
-$(".edit").delegate("span", "click", function(){
+$(".edit").on("click", "span", function(){
    $(".cross").toggle();
-    alert('you clicked me!');
 });
 }
 
@@ -458,7 +454,7 @@ function getInput() {
 	var input = custInput.val();
 
 	if ((input !== "") && ($.trim(input) !== "")) {
-	//	addItem(input);
+		addItem(input);
 		custInput.val("");
 	}
 }
