@@ -125,7 +125,7 @@
 	    $("#SLItems tr").empty();
         $("#SLItems td").empty();
 		
-		$("#SLItems thead tr").append("<th class='edit' onclick='editBtton();'><span>edit</span></th>");
+		$("#SLItems thead tr").append("<th colspan='3' class='edit' onclick='editBtton();'><span>edit</span></th>");
  
 		//$('#SLItems').addClass('id').attr('id', $(obj).text());
 		//$("#SLItems").removeClass('id').attr('id', 'SLItems');
@@ -443,7 +443,7 @@ function addItem(message) {
 
 	var content = "<td class=\"content\"><span>" + message + "</span></td>";
 
-	var delIcon = "<td><img src=\"img/cross.png\" alt=\"cross\" class=\"cross\"></td>";
+	var delIcon = "<td align='center'><img src=\"img/cross.png\" alt=\"cross\" class=\"cross\"></td>";
 
 	$("#SLItems").append("<tr>" + checkbox + content + delIcon + "</tr>");
 	 $("#SLItems").append("</tbody>");

@@ -60,33 +60,14 @@
                     <h1>Shopping List <img src="img/cart.png" alt="Shopping cart icon" id="image" height="30" width="30"/></h1>               
                     <div data-role="navbar" data-iconpos="left">
                         <ul id="ulMenu">
-                            <!--Opens the 'nav-panel' panel menu on the left-->
-                            <li><a  href="#nav-panel"  data-icon="bars" data-iconpos="notext" data-transition="slide" data-direction="reverse">Menu</a></li>
-							<!--Opens the 'search' page-->
-							<li><a  href="#faqpage"  data-icon="search" data-iconpos="notext" data-transition="slide" data-direction="reverse">FAQs</a></li>
 							<!--Opens the 'home' page-->
 							<li><a  href="#mainpage"  data-icon="home" data-iconpos="notext" data-transition="slide" data-direction="reverse">Home</a></li>
+                  			<!--Opens the 'search' page-->
+							<li><a  href="#faqpage"  data-icon="search" data-iconpos="notext" data-transition="slide" data-direction="reverse">FAQs</a></li>
                         </ul>
                     </div>
         </div>
 		<!--End of header-->
-		<!--Menu on the left-->
-        <!--Panel used for the navigation menu, positioned left. Stays on page until the close button is clicked, fixed positioned.
-        Display of panel will overlay original content-->
-                <div data-role="panel" data-position="left" data-dismissible="false" data-position-fixed="true" data-display="overlay" id="nav-panel" data-theme="b" data-dividertheme="b">
-                    <!--List view unordered list which will be common for all users-->
-                    <ul data-role="listview">
-                        <!--Divider for Heading-->
-                        <li data-role="list-divider">Main Menu</li>
-                        <li data-icon="delete" style="background-color: #111;">
-                            <!--Close menu to close navigation panel-->
-                            <a href="#" data-rel="close">Close menu</a>
-                        </li>
-                        <li><a href="#report" onclick="">Report Generation</a></li>
-                        <li><a href="#specialoffers" onclick="">Special Offers</a></li>
-                    </ul>            
-                </div>
-		<!--End of Menu on the left-->
 		<div data-role="content" data-theme="b" id="home">
 			<!--Create new Shopping List-->
 			<div id="SLView" data-role="content">
@@ -118,35 +99,16 @@
 		<!--Header for the content pages with heading with navigation-->
        <div data-role="header" data-position="fixed">	   
             <h1>Shopping List <img src="img/cart.png" alt="Shopping cart icon" id="image" height="30" width="30"/></h1>               
-                <div data-role="navbar" data-iconpos="left">
-                     <ul id="ulMenu">
-                        <!--Opens the 'nav-panel' panel menu on the left-->
-                        <li><a  href="#nav-panel"  data-icon="bars" data-iconpos="notext" data-transition="slide" data-direction="reverse">Menu</a></li>
-						<!--Opens the 'search' page-->
-						<li><a  href="#faqpage"  data-icon="search" data-iconpos="notext" data-transition="slide" data-direction="reverse">FAQs</a></li>
-						<!--Opens the 'home' page-->
-						<li><a  href="#mainpage"  data-icon="home" data-iconpos="notext" data-transition="slide" data-direction="reverse">Home</a></li>
-                      </ul>
-                 </div>
+                    <div data-role="navbar" data-iconpos="left">
+                        <ul id="ulMenu">
+							<!--Opens the 'home' page-->
+							<li><a  href="#mainpage"  data-icon="home" data-iconpos="notext" data-transition="slide" data-direction="reverse">Home</a></li>
+                  			<!--Opens the 'search' page-->
+							<li><a  href="#faqpage"  data-icon="search" data-iconpos="notext" data-transition="slide" data-direction="reverse">FAQs</a></li>
+                        </ul>
+                    </div>
         </div>
 		<!--End of header-->
-		<!--Menu on the left-->
-        <!--Panel used for the navigation menu, positioned left. Stays on page until the close button is clicked, fixed positioned.
-        Display of panel will overlay original content-->
-                <div data-role="panel" data-position="left" data-dismissible="false" data-position-fixed="true" data-display="overlay" id="nav-panel" data-theme="b" data-dividertheme="b">
-                    <!--List view unordered list which will be common for all users-->
-                    <ul data-role="listview">
-                        <!--Divider for Heading-->
-                        <li data-role="list-divider">Main Menu</li>
-                        <li data-icon="delete" style="background-color: #111;">
-                            <!--Close menu to close navigation panel-->
-                            <a href="#" data-rel="close">Close menu</a>
-                        </li>
-                        <li><a href="#faqpage" onclick="">FAQs</a></li>
-                        <li><a href="#specialoffers" onclick="">Special Offers</a></li>
-                    </ul>            
-                </div>
-		<!--End of Menu on the left-->
 		<input data-type="search" id="searchFAQ" placeholder="Type to search"/>
 			<div data-role="collapsible-set" class="wrap" data-input="#searchFAQ" data-filter="true">
 				<div data-role="collapsible">
@@ -161,90 +123,31 @@
 					<h3>Is it possible to print my shopping list?</h3>
 					<p>Yes, one can export the shopping list and send it via email or print it.</p>
 				</div>
-				</div>
+			</div>
 			
-				</div>
+		</div>
 	<!--<<<<<<<<<<THIS IS THE END OF THE FAQ PAGE>>>>>>>>>>-->
 		
-	<!--<<<<<<<<<<THIS IS THE SPECIAL OFFERS PAGE>>>>>>>>>>-->
-		<div data-role="page" data-theme="b" id="specialoffers">
-				<!--Header for the content pages with heading with navigation-->
-        <div data-role="header" data-position="fixed">
-                    <h1>Shopping List <img src="img/cart.png" alt="Shopping cart icon" id="image" height="30" width="30"/></h1>               
-                    <div data-role="navbar" data-iconpos="left">
-                        <ul id="ulMenu">
-                            <!--Opens the 'nav-panel' panel menu on the left-->
-                            <li><a  href="#nav-panel"  data-icon="bars" data-iconpos="notext" data-transition="slide" data-direction="reverse">Menu</a></li>
-							<!--Opens the 'search' page-->
-							<li><a  href="#faqpage"  data-icon="search" data-iconpos="notext" data-transition="slide" data-direction="reverse">FAQs</a></li>
-							<!--Opens the 'home' page-->
-							<li><a  href="#mainpage"  data-icon="home" data-iconpos="notext" data-transition="slide" data-direction="reverse">Home</a></li>
-                        </ul>
-                    </div>
-        </div>
-		<!--End of header-->
-		<!--Menu on the left-->
-        <!--Panel used for the navigation menu, positioned left. Stays on page until the close button is clicked, fixed positioned.
-        Display of panel will overlay original content-->
-                <div data-role="panel" data-position="left" data-dismissible="false" data-position-fixed="true" data-display="overlay" id="nav-panel" data-theme="b" data-dividertheme="b">
-                    <!--List view unordered list which will be common for all users-->
-                    <ul data-role="listview">
-                        <!--Divider for Heading-->
-                        <li data-role="list-divider">Main Menu</li>
-                        <li data-icon="delete" style="background-color: #111;">
-                            <!--Close menu to close navigation panel-->
-                            <a href="#" data-rel="close">Close menu</a>
-                        </li>
-                        <li><a href="#faqpage" onclick="">FAQs</a></li>
-                        <li><a href="#specialoffers" onclick="">Special Offers</a></li>
-                    </ul>            
-                </div>
-		<!--End of Menu on the left-->
-		SPECIAL OFFERS PAGE
-		
-
-			</div>
-	<!--<<<<<<<<<<THIS IS THE END OF THE SPECIAL OFFERS PAGE>>>>>>>>>>-->
-	
-	<!--<<<<<<<<<<THIS IS THE SHOPPING LIST PAGE>>>>>>>>>>-->
+    <!--<<<<<<<<<<THIS IS THE SHOPPING LIST PAGE>>>>>>>>>>-->
 		<!--Add Shopping Items-->
 		<div data-role="page" data-theme="b" id="SLItem">
 			<div data-role="content" class="ui-content">
 				<div data-role="header" data-position="fixed">
                     <h1>Shopping List <img src="img/cart.png" alt="Shopping cart icon" id="image" height="30" width="30"/></h1>
 						<div data-role="navbar" data-iconpos="left">
-							<ul id="ulMenu">
-								<!--Opens the 'nav-panel' panel menu on the left-->
-								<li><a  href="#nav-panel"  data-icon="bars" data-iconpos="notext" data-transition="slide" data-direction="reverse">Menu</a></li>
-								<!--Opens the 'search' page-->
-								<li><a  href="#faqpage"  data-icon="search" data-iconpos="notext" data-transition="slide" data-direction="reverse">FAQs</a></li>
-								<!--Opens the 'home' page-->
-								<li><a  href="#mainpage"  data-icon="home" data-iconpos="notext" data-transition="slide" data-direction="reverse">Home</a></li>
-							</ul>
-						</div>					
+                        <ul id="ulMenu">
+							<!--Opens the 'home' page-->
+							<li><a  href="#mainpage"  data-icon="home" data-iconpos="notext" data-transition="slide" data-direction="reverse">Home</a></li>
+                  			<!--Opens the 'search' page-->
+							<li><a  href="#faqpage"  data-icon="search" data-iconpos="notext" data-transition="slide" data-direction="reverse">FAQs</a></li>
+                        </ul>
+                    </div>	
 				</div>
 						<!--End of header-->
-		<!--Menu on the left-->
-        <!--Panel used for the navigation menu, positioned left. Stays on page until the close button is clicked, fixed positioned.
-        Display of panel will overlay original content-->
-                <div data-role="panel" data-position="left" data-dismissible="false" data-position-fixed="true" data-display="overlay" id="nav-panel" data-theme="b" data-dividertheme="b">
-                    <!--List view unordered list which will be common for all users-->
-                    <ul data-role="listview">
-                        <!--Divider for Heading-->
-                        <li data-role="list-divider">Main Menu</li>
-                        <li data-icon="delete" style="background-color: #111;">
-                            <!--Close menu to close navigation panel-->
-                            <a href="#" data-rel="close">Close menu</a>
-                        </li>
-                        <li><a href="#faqpage" onclick="">FAQs</a></li>
-                        <li><a href="#specialoffers" onclick="">Special Offers</a></li>
-                    </ul>            
-                </div>
-				<!--End of Menu on the left-->
 				<div>						
 							<table border="0" cellpadding="0">
 							<tr>
-								<td width="60%"><input type="text" class="custinput" id="SLINew" placeholder="Add items..." data-mini="true" autofocus /></td>
+								<td width="60%"><input type="text" class="custinput" id="SLINew" placeholder="Add items..." data-mini="true"/></td>
 								<td><input type='text' name='quantity' value='1' class='qty' style="margin-bottom: 0px !important"/></td>
 								<td><input type='button' value='-' class='qtyminus' field='quantity' /></td>
 								<td><input type='button' value='+' class='qtyplus' field='quantity' /></td></tr>
@@ -254,28 +157,21 @@
 							</tr>
 							<tr>
 								<td><h3>Current List:</h3></td>
-								<td colspan="3" width="100%"><input id="SIFilter" data-type="search" placeholder="Search..." data-mini="true" autofocus /></td>
+								<td colspan="3" width="100%"><input data-type="search" id="SIFilter"  placeholder="Search..." data-mini="true"/></td>
 							</tr>
 							</table>
-							
 					<div class="items">
-					
-					
 						<hr>
-						
-							<table class="items;table" id="SLItems" border="1">
+							<table class="items;table" id="SLItems" border="0">
 								<thead>
 									<tr>
-										<th class="edit" colspan="3"><span>edit</span></th>
+										<th class="edit"><span>Edit</span></th>
 									</tr>
 								</thead>
-								<tbody  data-input="#SIFilter">
+								<tbody data-input="#SIFilter" data-filter="true">
 								</tbody>
 							</table>
-							
 					</div>
-						<!--ul data-role="listview" data-filter="true" id="SLItems" data-input="#SIFilter" data-autodividers="true" data-inset="true" class="touch" data-icon="false" data-split-icon="delete" data-split-theme="d"></ul-->
-						<!--ul data-role="listview" data-filter="true" id="SLItems" data-input="#SIFilter" data-autodividers="true" class="touch" data-icon="true" data-split-icon="delete"></ul-->
 				</div>
 			</div>
 				<button onclick="window.location='#mainpage'">Back to Shopping Lists</button>
@@ -283,47 +179,5 @@
 		<!--End of Add Shopping Items-->
 		</div> 	
 	<!--<<<<<<<<<<THIS IS THE END OF THE SHOPPING LIST PAGE>>>>>>>>>>-->
-		
-	<!--<<<<<<<<<<THIS IS THE REPORT GENERATION PAGE>>>>>>>>>>-->
-		<div data-role="page" data-theme="b" id="report">
-			<div data-role="content" class="ui-content">
-				<div data-role="header" data-position="fixed">
-                    <h1>Shopping List <img src="img/cart.png" alt="Shopping cart icon" id="image" height="30" width="30"/></h1>
-						<div data-role="navbar" data-iconpos="left">
-							<ul id="ulMenu">
-								<!--Opens the 'nav-panel' panel menu on the left-->
-								<li><a  href="#nav-panel"  data-icon="bars" data-iconpos="notext" data-transition="slide" data-direction="reverse">Menu</a></li>
-								<!--Opens the 'search' page-->
-								<li><a  href="#faqpage"  data-icon="search" data-iconpos="notext" data-transition="slide" data-direction="reverse">FAQs</a></li>
-								<!--Opens the 'home' page-->
-								<li><a  href="#mainpage"  data-icon="home" data-iconpos="notext" data-transition="slide" data-direction="reverse">Home</a></li>
-							</ul>
-						</div>					
-				</div>
-						<!--End of header-->
-		<!--Menu on the left-->
-        <!--Panel used for the navigation menu, positioned left. Stays on page until the close button is clicked, fixed positioned.
-        Display of panel will overlay original content-->
-                <div data-role="panel" data-position="left" data-dismissible="false" data-position-fixed="true" data-display="overlay" id="nav-panel" data-theme="b" data-dividertheme="b">
-                    <!--List view unordered list which will be common for all users-->
-                    <ul data-role="listview">
-                        <!--Divider for Heading-->
-                        <li data-role="list-divider">Main Menu</li>
-                        <li data-icon="delete" style="background-color: #111;">
-                            <!--Close menu to close navigation panel-->
-                            <a href="#" data-rel="close">Close menu</a>
-                        </li>
-                        <li><a href="#faqpage" onclick="">FAQs</a></li>
-                        <li><a href="#specialoffers" onclick="">Special Offers</a></li>
-                    </ul>            
-                </div>
-				<!--End of Menu on the left-->
-				<div>						
-						GENERATE REPORT
-				</div>		
-		</div>
-	
-	</div>
-	<!--<<<<<<<<<<THIS IS THE END OF THE REPORT PAGE>>>>>>>>>>-->
 	</body>
 </html>
