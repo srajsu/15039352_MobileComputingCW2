@@ -1,8 +1,8 @@
 /*-------SHOPPING LIST-------*/
 
 	var chosenItems = {};
-	var listCreated = false;
 	var counter = "0";
+	var listCreated = false;
 
 	$( document ).ready(function() {
 		
@@ -80,11 +80,11 @@
 	//iterate through the dictionary chosenItems
 	$("pageone ul").empty();
 	for (var key in chosenItems) {
-	listName = chosenItems[key];
+	listvalue = chosenItems[key];
 	
 	//adding items to list
-      	$('<li onclick="openShoppingList(this)">').append('<a href="#"><h3>' + listName + '</h3></a><a href="#" class="delete">Delete</a>').appendTo('#shoppingLists');
-     // $('<li onclick="test()">').append('<a href="#"><h3>' + listName + '</h3></a><a href="#" class="delete">Delete</a>').appendTo('#shoppingLists');
+      	$('<li onclick="openShoppingList(this)">').append('<a href="#"><h3>' + listvalue + '</h3></a><a href="#" class="delete">Delete</a>').appendTo('#shoppingLists');
+     // $('<li onclick="test()">').append('<a href="#"><h3>' + listvalue + '</h3></a><a href="#" class="delete">Delete</a>').appendTo('#shoppingLists');
 		}
 	$("#shoppingLists").listview('refresh');
 		}
@@ -103,7 +103,7 @@
 /*-------SHOPPING LIST ITEMS-------*/
 
 	var selectedShoppingList; 
-	var addNewItems = {};
+	var addItems = {};
 	var counterItems = "0";
 
 	//access shopping list items
@@ -125,14 +125,14 @@
 	    $("#SLItems tr").empty();
         $("#SLItems td").empty();
 		
-		$("#SLItems thead tr").append("<th colspan='3' class='edit' onclick='editBtton();'><span>edit</span></th>");
+		$("#SLItems thead tr").append("<th value='datepicker1'>Date: </th>" + "<th colspan='3' class='edit' onclick='editBtton();'><span>edit</span></th>");
  
 		//$('#SLItems').addClass('id').attr('id', $(obj).text());
 		//$("#SLItems").removeClass('id').attr('id', 'SLItems');
 
 		var w = localStorage.getItem(selectedShoppingList);
 		if (w!=null) {
-			addNewItems = JSON.parse(w);
+			addItems = JSON.parse(w);
 			SIAdd();}
 			else{
 				
@@ -156,12 +156,13 @@
 	 	$("#SLItems > tr").empty();
 	 //	$("#SLItems > tbody").html("");
 	 
-	
-		
-		for (var key in addNewItems) {
+		for (var key in addItems) {
 			
-		listName = addNewItems[key];
-		addItem(listName);
+		listvalue = addItems[key];
+		listvalue = addItems[key].split(",")[0];
+		quantityitem = addItems[key].split(",")[1];
+		
+		addItem(listvalue,quantityitem);
 		
 		 //var checkbox = "<div class=\"checkBoxLeft\"><input type=\"checkbox\" id=\"item" + counterItems + "\" class=\"box\"></div>";
 		
@@ -169,7 +170,7 @@
 		
 	     // var checkbox = "<div class='check'><input type='checkbox' class='box' id='item" + counterItems + "'/>" +  "<label for='item" + id + "' class='check-label'></label></div>";
 	     // var delIcon = "<td><img src='img/cross.png' alt='cross' class='cross'></td>";
-	     // var items = "<tr style='text-decoration:none;'><td>" + checkbox + "</td><td class='content'><span class>" + listName + "</span></td>" + delIcon + "</tr>";
+	     // var items = "<tr style='text-decoration:none;'><td>" + checkbox + "</td><td class='content'><span class>" + listvalue + "</span></td>" + delIcon + "</tr>";
 	   
 	     //	$("#SLItems").append(items + "</tbody>");
 	
@@ -179,14 +180,14 @@
 	}
 
 	function saveItemChoice(){
-		if (Object.keys(addNewItems).length == "0"){}
+		if (Object.keys(addItems).length == "0"){}
 			else{
-				counterItems = parseInt(Object.keys(addNewItems).length) + 1;
+				counterItems = parseInt(Object.keys(addItems).length) + 1;
 				}
 
 				shoppingListItemAdd = $("#SLINew").val();
-				addNewItems[counterItems] = shoppingListItemAdd;
-				localStorage.setItem(selectedShoppingList,JSON.stringify(addNewItems));
+				addItems[counterItems] = shoppingListItemAdd;
+				localStorage.setItem(selectedShoppingList,JSON.stringify(addItems));
 	}
 
 		
@@ -433,7 +434,7 @@ function getInput() {
 /*--------------------------------------------------------------*/
 	//adding item to the list increment id counter for unique id
 /*--------------------------------------------------------------*/
-function addItem(message) {
+function addItem(message,quantityitem) {
 
 	 $(".cross").hide(); // hiding the delete icon
 	 
@@ -443,10 +444,12 @@ function addItem(message) {
 
 	var content = "<td class=\"content\"><span>" + message + "</span></td>";
 
+	var quant = "<td class=\"qty\"><span>" + quantityitem + "</span></td>";
+	
 	var delIcon = "<td align='center'><img src=\"img/cross.png\" alt=\"cross\" class=\"cross\"></td>";
 
-	$("#SLItems").append("<tr>" + checkbox + content + delIcon + "</tr>");
-	 $("#SLItems").append("</tbody>");
+	$("#SLItems").append("<tr>" + checkbox + content + quant + delIcon + "</tr>");
+	$("#SLItems").append("</tbody>");
 	id++;
 }
 
