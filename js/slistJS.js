@@ -7,7 +7,7 @@
 	$( document ).ready(function() {
 		
 	//localStorage.removeItem("SLINew");
-	//localStorage.removeItem("monday");
+	//localStorage.removeItem("hi");
 	$("#shoppingLists").on("taphold",function(){
 	$(this).hide();
 	});   
@@ -74,7 +74,7 @@
 /*-------Shopping list - adding a new list-------*/
 
 	function appendToList(){
-	
+	$("#shoppingLists").empty();
 	if ($("#SLNew").val()!="")  saveChoice();
 
 	//iterate through the dictionary chosenItems
@@ -145,20 +145,11 @@
 		
 		if ($("#SLINew").val()!="")  saveItemChoice();
 		
-		
-		//add edit button in table
-		// var editbutton = "<thead><tr><td><th class='edit' colspan='3'><span>edit</span></th></td></tr></thead><tbody>";
-	//	 $("#SLItems").append(editbutton);
-		
-		 
-		//$("#SLItems").empty();
-		//		$("#SLItems > tbody").empty();
-	 	$("#SLItems > tr").empty();
-	 //	$("#SLItems > tbody").html("");
+		 $("#SLItems tr").empty();
+         $("#SLItems td").empty();
 	 
 		for (var key in addItems) {
 			
-		listvalue = addItems[key];
 		listvalue = addItems[key].split(",")[0];
 		quantityitem = addItems[key].split(",")[1];
 		
@@ -186,7 +177,7 @@
 				}
 
 				shoppingListItemAdd = $("#SLINew").val();
-				addItems[counterItems] = shoppingListItemAdd;
+				addItems[counterItems] = shoppingListItemAdd + "," + $("#itemQuantity").val() ;
 				localStorage.setItem(selectedShoppingList,JSON.stringify(addItems));
 	}
 
@@ -444,11 +435,11 @@ function addItem(message,quantityitem) {
 
 	var content = "<td class=\"content\"><span>" + message + "</span></td>";
 
-	var quant = "<td class=\"qty\"><span>" + quantityitem + "</span></td>";
+	var quantity = "<td class=\"qty\"><span>" + quantityitem + "</span></td>";
 	
 	var delIcon = "<td align='center'><img src=\"img/cross.png\" alt=\"cross\" class=\"cross\"></td>";
 
-	$("#SLItems").append("<tr>" + checkbox + content + quant + delIcon + "</tr>");
+	$("#SLItems").append("<tr>" + checkbox + content + quantity + delIcon + "</tr>");
 	$("#SLItems").append("</tbody>");
 	id++;
 }

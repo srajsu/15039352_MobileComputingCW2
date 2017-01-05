@@ -154,9 +154,9 @@
 							<table border="0" cellpadding="0">
 							<tr>
 								<td width="60%"><input type="text" class="custinput" id="SLINew" placeholder="Add items..." data-mini="true"/></td>
-								<td><input type='text' name='quantity' value='1' class='qty' style="margin-bottom: 0px !important"/></td>
+								<td><input type='text' id="itemQuantity" name='quantity' value='1' class='qty' style="margin-bottom: 0px !important"/></td>
 								<td><input type='button' value='-' class='qtyminus' field='quantity' /></td>
-								<td><input type='button' value='+' class='qtyplus' field='quantity' /></td></tr>
+								<td><input type='button' value='+' class='qtyplus'  field='quantity' /></td></tr>
 								<tr>
 								<tr>
 								<td colspan="4"><button type="submit" onclick="SIAdd()">Add</button></td>
@@ -172,7 +172,7 @@
 								<thead>
 									<tr>
 										<!--th style="display:none;" id="datepicker1"><span>Date: 2017/01/05</span></th-->
-										<th value='datepicker1'>Date: </th>
+										<th>Date: <span class='datepicker1'></span></th>
 										<th class="edit"><span>Edit</span></th>
 									</tr>
 								</thead>
