@@ -194,15 +194,6 @@
 	function backToList(){
 		$("#" + selectedShoppingList).empty();
 		$.mobile.changePage("#SLView");}
-
-
-	//Delete saved shopping lists
-	//function removeshoppinglists() {
-    //var elem = document.getElementById('shoppingLists');
-    //elem.parentNode.removeChild(elem);
-    //return false;
-	//}
-		
 		
 /*-------Shopping list available items - to be used in autocomplete field-------*/
 
@@ -223,7 +214,7 @@
        "Spinach",
        "Squash",
        "Zucchini",
-       "Tomatoes*",
+       "Tomatoes",
        "BBQ sauce",
        "Gravy",
        "Honey",
@@ -413,8 +404,6 @@
 
 var id = 1; // unique id for list items
 
-
-
 // triggered on Enter
 $(document).on("keydown", function(e) {
 	if(e.keyCode === 13) {
@@ -429,9 +418,6 @@ function editBtton() {
    $(".cross").toggle();
 
 }
-
-
-
 
 // Obtaining customer input and then calling addItem() with the input
 function getInput() {
@@ -451,8 +437,6 @@ function addItem(message) {
 
 	 $(".cross").hide(); // hiding the delete icon
 	 
-	
-	 
 	 $("#SLItems").append("<tbody>");
 
 	var checkbox = "<td class=\"check\">" + "<input type=\"checkbox\" id=\"item" + id + "\" class=\"box\">" + "<label for=\"item" + id + "\" class=\"check-label\"></label></td>";
@@ -468,7 +452,6 @@ function addItem(message) {
 
 $(document).ready(function(e) {
 	
-	
 
 	$("tbody").on("click", ".cross", function() {
 		$(this).closest("tr").remove();
@@ -481,4 +464,7 @@ $(document).ready(function(e) {
 	});
 });
 
+
 /*--------------------------------------------------------------*/
+//List export
+

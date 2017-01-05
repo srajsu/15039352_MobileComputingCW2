@@ -24,7 +24,32 @@
 			var datepicker = $( "#datepicker" ).datepicker();
 			} );
 		</script>
-		
+		<script type="text/javascript">
+						var _gaq = _gaq || [];
+						_gaq.push(['_setAccount', 'UA-36251023-1']);
+						_gaq.push(['_setDomainName', 'jqueryscript.net']);
+						_gaq.push(['_trackPageview']);
+
+						function aa() {
+							var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+							ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+							var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+						};
+		</script>
+		<!--Export shopping list to excel-->
+		<script type="text/javascript">
+				var tableToExcel = (function() {
+					var uri = 'data:application/vnd.ms-excel;base64,'
+					, template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>'
+					, base64 = function(s) { return window.btoa(unescape(encodeURIComponent(s))) }
+					, format = function(s, c) { return s.replace(/{(\w+)}/g, function(m, p) { return c[p]; }) }
+				return function(table, name) {
+					if (!table.nodeType) table = document.getElementById(table)
+				var ctx = {worksheet: name || 'Worksheet', table: table.innerHTML}
+					window.location.href = uri + base64(format(template, ctx))
+				}	
+				})()
+		</script>
    	</head>
 
 	<body>
@@ -219,7 +244,7 @@
 				<div>						
 							<table border="0" cellpadding="0">
 							<tr>
-								<td width="80%"><input type="text" class="custinput" id="SLINew" placeholder="Add items..." data-mini="true" autofocus /></td>
+								<td width="60%"><input type="text" class="custinput" id="SLINew" placeholder="Add items..." data-mini="true" autofocus /></td>
 								<td><input type='text' name='quantity' value='1' class='qty' style="margin-bottom: 0px !important"/></td>
 								<td><input type='button' value='-' class='qtyminus' field='quantity' /></td>
 								<td><input type='button' value='+' class='qtyplus' field='quantity' /></td></tr>
@@ -238,10 +263,10 @@
 					
 						<hr>
 						
-							<table class="items" id="SLItems" style="width:100%;">
+							<table class="items;table" id="SLItems" border="1">
 								<thead>
 									<tr>
-										<th class="edit"><span>edit</span></th>
+										<th class="edit" colspan="3"><span>edit</span></th>
 									</tr>
 								</thead>
 								<tbody  data-input="#SIFilter">
@@ -249,25 +274,12 @@
 							</table>
 							
 					</div>
-
-					<script type="text/javascript">
-						var _gaq = _gaq || [];
-						_gaq.push(['_setAccount', 'UA-36251023-1']);
-						_gaq.push(['_setDomainName', 'jqueryscript.net']);
-						_gaq.push(['_trackPageview']);
-
-						function aa() {
-							var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-							ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-							var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-						};
-					</script>
 						<!--ul data-role="listview" data-filter="true" id="SLItems" data-input="#SIFilter" data-autodividers="true" data-inset="true" class="touch" data-icon="false" data-split-icon="delete" data-split-theme="d"></ul-->
 						<!--ul data-role="listview" data-filter="true" id="SLItems" data-input="#SIFilter" data-autodividers="true" class="touch" data-icon="true" data-split-icon="delete"></ul-->
 				</div>
 			</div>
 				<button onclick="window.location='#mainpage'">Back to Shopping Lists</button>
-				<!--button onclick="showChosenItems()">Show Chosen Items</button-->
+				<button onclick="tableToExcel('SLItems', 'W3C Example Table')">Export list to Excel</button>
 		<!--End of Add Shopping Items-->
 		</div> 	
 	<!--<<<<<<<<<<THIS IS THE END OF THE SHOPPING LIST PAGE>>>>>>>>>>-->

@@ -67,6 +67,10 @@ text-align: center;
 clear: both;
 margin: 0 auto;
 }
+table {
+table-layout: fixed;
+width: 100%;
+}
 td {
 font-size: 16px;
 }
