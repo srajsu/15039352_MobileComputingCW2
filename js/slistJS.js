@@ -9,11 +9,14 @@
 	//localStorage.removeItem("SLINew");
 	//localStorage.removeItem("hi");
 	
+	var x = document.getElementById("myDate").value;
+   // document.getElementById("myDateValueList").innerHTML = x;
+	 document.getElementById("myDateValueItem").innerHTML = x;
+	 document.getElementById("myDateValueItem").value = x;
+	 
 	$("#shoppingLists").on("taphold",function(){
 	$(this).hide();
 	});   
-
-	//Added->
 						$("#shoppingListsItems").on("click","li", function(){
                        $(this).closest("li").find("h3").toggleClass("checked");
 					   
@@ -29,12 +32,9 @@
 					});
 	
 	
-	//<-Added
-	
-	
 	var q = localStorage.getItem("SLView");
 	if (q!=null) chosenItems = JSON.parse(q);
-	appendToList();
+	appendToList();	
 	
 		// This button will increment the value
     $('.qtyplus').click(function(e){
@@ -144,7 +144,13 @@
 		$("#" + currentSL).empty();
 	    $("#SLItems tr").empty();
         $("#SLItems td").empty();
-		$("#SLItems thead tr").append("<th value='datepicker1'>Date: </th>" + "<th colspan='3' class='edit' onclick='editBtton();'><span>edit</span></th>");
+		
+		
+		$("#SLItems thead tr").append("<th id='myDateValueList'> Date: </th>" + "<th colspan='3' class='edit' onclick='editBtton();'><span>edit</span></th>");
+		
+		var x = document.getElementById("myDate").value;
+     	 document.getElementById("myDateValueList").innerHTML = x;
+	     document.getElementById("myDateValueList").value = x;
  
 		//$('#SLItems').addClass('id').attr('id', $(obj).text());
 		//$("#SLItems").removeClass('id').attr('id', 'SLItems');
@@ -163,7 +169,11 @@
 		
 		$("#SLItems tr").empty();
         $("#SLItems td").empty();
-		$("#SLItems thead tr").append("<th value='datepicker1'>Date: </th>" + "<th colspan='3' class='edit' onclick='editBtton();'><span>edit</span></th>");
+		$("#SLItems thead tr").append("<th id='myDateValueItem'>Date: </th>" + "<th colspan='3' class='edit' onclick='editBtton();'><span>edit</span></th>");
+		
+		var x = document.getElementById("myDate").value;
+        document.getElementById("myDateValueItem").innerHTML = x;
+	    document.getElementById("myDateValueItem").value = x;
 	 
 		if ($("#SLINew").val()!="")  saveItemChoice();
 		
@@ -480,3 +490,5 @@ function DeleteList()
 						
 						localStorage.removeItem("SLView");
 					    appendToList();}
+						
+						

@@ -18,16 +18,6 @@
 		<link rel="stylesheet" href="css/normalize.css" type="text/css" />
 		<script src="js/slistJS.js"></script>
 		
-		<!--Datepicker-->
-		<script>
-			$(function() {
-			//var datepicker = 
-			$( "#datepicker1" ).datepicker({
-			dateFormat: "yy-mm-dd"
-			}).datepicker("setDate", "0");
-			} );
-		</script>
-		
 		<!--Shopping item quantity-->
 		<script type="text/javascript">
 						var _gaq = _gaq || [];
@@ -55,7 +45,9 @@
 					window.location.href = uri + base64(format(template, ctx))
 				}	
 				})()
-		</script>
+
+
+</script>
    	</head>
 
 	<body>
@@ -80,7 +72,8 @@
 				<div data-role="content" class="ui-content">
 					<h3>Create a new Shopping List</h3>
 					<form class="">
-						<input id="datepicker1" type="text" placeholder="Choose a date...">
+						<!--input type="date" id="myDate" format="dd/MM/yyyy"-->
+						<input type="date" id="myDate" value="2017-01-06">
 						<input id="SLNew" placeholder="New shopping list name" />
 						<br>
 						<input type="button" value="Add" onclick="appendToList()" />
@@ -171,7 +164,7 @@
 								<thead>
 									<tr>
 										<!--th style="display:none;" id="lblSLName"></th-->
-										<th>Date: <span id='datepicker1'></span></th>
+										<th style="display:none;" id="myDateValueItem" value=""></th>
 										<th class="edit"><span>Edit</span></th>
 									</tr>
 								</thead>
