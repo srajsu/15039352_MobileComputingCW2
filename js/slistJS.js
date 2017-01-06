@@ -8,10 +8,30 @@
 		
 	//localStorage.removeItem("SLINew");
 	//localStorage.removeItem("hi");
+	
 	$("#shoppingLists").on("taphold",function(){
 	$(this).hide();
 	});   
 
+	//Added->
+						$("#shoppingListsItems").on("click","li", function(){
+                       $(this).closest("li").find("h3").toggleClass("checked");
+					   
+					   if($(this).closest("li").find("input").is(':checked'))
+					   {
+						  $(this).closest("li").find("input").prop('checked', false); 
+					   }else
+					   {
+						   $(this).closest("li").find("input").prop('checked', true);
+					   }
+					   
+					  
+					});
+	
+	
+	//<-Added
+	
+	
 	var q = localStorage.getItem("SLView");
 	if (q!=null) chosenItems = JSON.parse(q);
 	appendToList();
@@ -102,7 +122,7 @@
 
 /*-------SHOPPING LIST ITEMS-------*/
 
-	var selectedShoppingList; 
+	var currentSL; 
 	var addItems = {};
 	var counterItems = "0";
 
@@ -114,23 +134,23 @@
 
 		//refresh the items list
 		$("#SLINew").val('');
-		selectedShoppingList = "";
+		currentSL = "";
 		$("#lblSLName").empty();
 	
 		//provide a name to the selected shopping list
 		$("#lblSLName").append($(obj).text());
-		selectedShoppingList = $(obj).text();
+		currentSL = $(obj).text();
 
-		$("#" + selectedShoppingList).empty();
+		$("#" + currentSL).empty();
 	    $("#SLItems tr").empty();
         $("#SLItems td").empty();
-		
 		$("#SLItems thead tr").append("<th value='datepicker1'>Date: </th>" + "<th colspan='3' class='edit' onclick='editBtton();'><span>edit</span></th>");
  
 		//$('#SLItems').addClass('id').attr('id', $(obj).text());
 		//$("#SLItems").removeClass('id').attr('id', 'SLItems');
-
-		var w = localStorage.getItem(selectedShoppingList);
+		
+		addItems = {};
+		var w = localStorage.getItem(currentSL);
 		if (w!=null) {
 			addItems = JSON.parse(w);
 			SIAdd();}
@@ -140,34 +160,20 @@
 	}
 	
 	function SIAdd(){
-	
 		
-		
+		$("#SLItems tr").empty();
+        $("#SLItems td").empty();
+		$("#SLItems thead tr").append("<th value='datepicker1'>Date: </th>" + "<th colspan='3' class='edit' onclick='editBtton();'><span>edit</span></th>");
+	 
 		if ($("#SLINew").val()!="")  saveItemChoice();
 		
-		 $("#SLItems tr").empty();
-         $("#SLItems td").empty();
-	 
 		for (var key in addItems) {
 			
 		listvalue = addItems[key].split(",")[0];
 		quantityitem = addItems[key].split(",")[1];
 		
 		addItem(listvalue,quantityitem);
-		
-		 //var checkbox = "<div class=\"checkBoxLeft\"><input type=\"checkbox\" id=\"item" + counterItems + "\" class=\"box\"></div>";
-		
-		 //$(".cross").hide(); // hiding the delete icon
-		
-	     // var checkbox = "<div class='check'><input type='checkbox' class='box' id='item" + counterItems + "'/>" +  "<label for='item" + id + "' class='check-label'></label></div>";
-	     // var delIcon = "<td><img src='img/cross.png' alt='cross' class='cross'></td>";
-	     // var items = "<tr style='text-decoration:none;'><td>" + checkbox + "</td><td class='content'><span class>" + listvalue + "</span></td>" + delIcon + "</tr>";
-	   
-	     //	$("#SLItems").append(items + "</tbody>");
-	
 	    }
-
-	
 	}
 
 	function saveItemChoice(){
@@ -178,13 +184,13 @@
 
 				shoppingListItemAdd = $("#SLINew").val();
 				addItems[counterItems] = shoppingListItemAdd + "," + $("#itemQuantity").val() ;
-				localStorage.setItem(selectedShoppingList,JSON.stringify(addItems));
+				localStorage.setItem(currentSL,JSON.stringify(addItems));
 	}
 
 		
 	//
 	function backToList(){
-		$("#" + selectedShoppingList).empty();
+		$("#" + currentSL).empty();
 		$.mobile.changePage("#SLView");}
 		
 /*-------Shopping list available items - to be used in autocomplete field-------*/
@@ -435,7 +441,7 @@ function addItem(message,quantityitem) {
 
 	var content = "<td class=\"content\"><span>" + message + "</span></td>";
 
-	var quantity = "<td class=\"qty\"><span>" + quantityitem + "</span></td>";
+	var quantity = "<td align='center' class=\"qty\"><span>" + quantityitem + "</span></td>";
 	
 	var delIcon = "<td align='center'><img src=\"img/cross.png\" alt=\"cross\" class=\"cross\"></td>";
 
@@ -460,5 +466,17 @@ $(document).ready(function(e) {
 
 
 /*--------------------------------------------------------------*/
-//List export
-
+//Delete shopping list
+function DeleteList()
+	{
+		localStorage.removeItem(currentSL);
+						
+		$("#" + currentSL).empty();
+		$.mobile.changePage("#SLView");
+						
+			for (var key in chosenItems) {
+			     if(chosenItems[key] == currentSL){
+					delete chosenItems[key];}}
+						
+						localStorage.removeItem("SLView");
+					    appendToList();}

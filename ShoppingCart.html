@@ -91,7 +91,7 @@
 					<form class="ui-filterable">
 						<input placeholder="Search for existing list" id="Items" data-type="search">
 					</form>
-				<ul data-role="listview" data-filter="true" id="shoppingLists" data-input="#Items" data-autodividers="true" data-inset="true" class="touch" data-icon="false" data-split-icon="delete" data-split-theme="d"></ul>
+				<ul data-role="listview" data-filter="true" id="shoppingLists" data-input="#Items" data-autodividers="true" data-inset="true" class="touch" data-icon="false" data-split-theme="d"></ul>
 				</div>							
 			</div>
 		<!--End of Create new Shopping List-->
@@ -158,7 +158,6 @@
 								<td><input type='button' value='-' class='qtyminus' field='quantity' /></td>
 								<td><input type='button' value='+' class='qtyplus'  field='quantity' /></td></tr>
 								<tr>
-								<tr>
 								<td colspan="4"><button type="submit" onclick="SIAdd()">Add</button></td>
 							</tr>
 							<tr>
@@ -171,8 +170,8 @@
 							<table class="items;table" id="SLItems" border="0">
 								<thead>
 									<tr>
-										<!--th style="display:none;" id="datepicker1"><span>Date: 2017/01/05</span></th-->
-										<th>Date: <span class='datepicker1'></span></th>
+										<!--th style="display:none;" id="lblSLName"></th-->
+										<th>Date: <span id='datepicker1'></span></th>
 										<th class="edit"><span>Edit</span></th>
 									</tr>
 								</thead>
@@ -184,6 +183,7 @@
 			</div>
 				<button onclick="window.location='#mainpage'">Back to Shopping Lists</button>
 				<button onclick="tableToExcel('SLItems', 'W3C Example Table')">Export list to Excel</button>
+				<button onclick="DeleteList(),window.location='#mainpage'">Delete Shopping List</button>
 		<!--End of Add Shopping Items-->
 		</div> 	
 	<!--<<<<<<<<<<THIS IS THE END OF THE SHOPPING LIST PAGE>>>>>>>>>>-->
